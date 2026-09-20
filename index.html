@@ -1,0 +1,6384 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>MIDNIGHT</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MIDNIGHT</title>
+
+<style>
+:root{
+    --theme:#7c3aed;
+    --theme-bright:#a78bfa;
+
+    --bg:#08060d;
+    --bg2:#0d0915;
+    --bg3:#120d1c;
+
+    --panel:#171020;
+    --panel2:#1e1429;
+
+    --border:#352346;
+    --border-bright:#633c83;
+
+    --hover:#291b38;
+
+    --text:#ffffff;
+    --muted:#aaa0b7;
+
+    --shadow:rgba(124,58,237,.25);
+    --glow:rgba(124,58,237,.5);
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,Helvetica,sans-serif;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    min-height:100vh;
+    color:var(--text);
+
+    background:
+        radial-gradient(circle at 20% 10%,var(--shadow),transparent 25%),
+        radial-gradient(circle at 80% 80%,var(--shadow),transparent 25%),
+        linear-gradient(135deg,var(--bg),var(--bg2),var(--bg3));
+
+    transition:
+        background .35s ease,
+        color .35s ease;
+}
+
+/* ================= NAVBAR ================= */
+
+.navbar{
+    position:sticky;
+    top:0;
+    z-index:1000;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    padding:18px 7%;
+
+    background:rgba(8,6,13,.82);
+    backdrop-filter:blur(18px);
+
+    border-bottom:1px solid var(--border);
+}
+
+.logo{
+    font-size:25px;
+    font-weight:900;
+    letter-spacing:4px;
+
+    color:var(--theme-bright);
+
+    text-shadow:
+        0 0 10px var(--glow),
+        0 0 25px var(--glow);
+}
+
+.nav-links{
+    display:flex;
+    gap:28px;
+    list-style:none;
+}
+
+.nav-links a{
+    color:var(--muted);
+    text-decoration:none;
+
+    font-size:14px;
+    font-weight:bold;
+
+    transition:.25s;
+}
+
+.nav-links a:hover{
+    color:var(--theme-bright);
+}
+
+/* ================= HERO ================= */
+
+.hero{
+    min-height:88vh;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    text-align:center;
+
+    padding:70px 20px;
+
+    position:relative;
+    overflow:hidden;
+}
+
+.hero::before{
+    content:"";
+
+    position:absolute;
+
+    width:450px;
+    height:450px;
+
+    background:var(--glow);
+
+    filter:blur(130px);
+
+    opacity:.25;
+
+    border-radius:50%;
+}
+
+.hero-content{
+    position:relative;
+    z-index:2;
+}
+
+.hero h1{
+    font-size:clamp(65px,12vw,150px);
+
+    letter-spacing:18px;
+    font-weight:1000;
+
+    color:white;
+
+    text-shadow:
+        0 0 15px var(--glow),
+        0 0 45px var(--glow),
+        0 0 90px var(--glow);
+}
+
+.hero p{
+    margin-top:15px;
+
+    font-size:clamp(14px,2vw,20px);
+
+    letter-spacing:5px;
+
+    color:var(--muted);
+}
+
+.main-btn{
+    margin-top:40px;
+
+    border:1px solid var(--theme);
+    background:var(--theme);
+
+    color:white;
+
+    padding:15px 32px;
+
+    border-radius:10px;
+
+    font-size:14px;
+    font-weight:bold;
+    letter-spacing:2px;
+
+    cursor:pointer;
+
+    box-shadow:0 0 25px var(--glow);
+
+    transition:.25s;
+}
+
+.main-btn:hover{
+    transform:translateY(-3px) scale(1.03);
+
+    box-shadow:
+        0 0 20px var(--glow),
+        0 0 45px var(--glow);
+}
+
+/* ================= SECTIONS ================= */
+
+.section{
+    padding:90px 7%;
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:45px;
+}
+
+.section-title h2{
+    font-size:38px;
+    letter-spacing:4px;
+}
+
+.section-title p{
+    color:var(--muted);
+    margin-top:10px;
+}
+
+/* ================= FEATURES ================= */
+
+.features{
+    display:grid;
+
+    grid-template-columns:
+        repeat(auto-fit,minmax(230px,1fr));
+
+    gap:22px;
+}
+
+.feature-card{
+    min-height:210px;
+
+    padding:28px;
+
+    background:
+        linear-gradient(
+            145deg,
+            var(--panel),
+            var(--panel2)
+        );
+
+    border:1px solid var(--border);
+
+    border-radius:18px;
+
+    display:flex;
+    flex-direction:column;
+
+    justify-content:space-between;
+
+    position:relative;
+    overflow:hidden;
+
+    transition:.3s;
+}
+
+.feature-card::before{
+    content:"";
+
+    position:absolute;
+
+    width:150px;
+    height:150px;
+
+    right:-60px;
+    top:-60px;
+
+    background:var(--glow);
+
+    filter:blur(45px);
+
+    opacity:.25;
+}
+
+.feature-card:hover{
+    transform:translateY(-7px);
+
+    border-color:var(--border-bright);
+
+    box-shadow:
+        0 15px 40px rgba(0,0,0,.35),
+        0 0 25px var(--shadow);
+}
+
+.feature-number{
+    color:var(--theme-bright);
+
+    font-size:12px;
+    font-weight:bold;
+
+    letter-spacing:3px;
+}
+
+.feature-card h3{
+    margin-top:15px;
+
+    font-size:23px;
+    letter-spacing:1px;
+}
+
+.feature-card p{
+    color:var(--muted);
+
+    margin-top:8px;
+
+    line-height:1.5;
+
+    font-size:14px;
+}
+
+.feature-btn{
+    margin-top:25px;
+
+    width:100%;
+
+    padding:11px;
+
+    border-radius:9px;
+
+    background:var(--hover);
+
+    border:1px solid var(--border);
+
+    color:white;
+
+    cursor:pointer;
+
+    font-weight:bold;
+
+    transition:.25s;
+}
+
+.feature-btn:hover{
+    background:var(--theme);
+
+    border-color:var(--theme);
+
+    box-shadow:0 0 18px var(--glow);
+}
+
+/* ================= ABOUT ================= */
+
+.about{
+    max-width:900px;
+    margin:auto;
+
+    text-align:center;
+}
+
+.about-box{
+    padding:40px;
+
+    background:var(--panel);
+
+    border:1px solid var(--border);
+
+    border-radius:20px;
+}
+
+.about-box h2{
+    color:var(--theme-bright);
+    margin-bottom:15px;
+}
+
+.about-box p{
+    color:var(--muted);
+    line-height:1.7;
+}
+
+/* ================= FOOTER ================= */
+
+footer{
+    text-align:center;
+
+    padding:35px 20px;
+
+    border-top:1px solid var(--border);
+
+    color:var(--muted);
+
+    background:var(--bg2);
+}
+
+/* ================= FULL SCREEN ================= */
+
+.game-screen{
+    display:none;
+
+    position:fixed;
+
+    inset:0;
+
+    z-index:5000;
+
+    background:
+        radial-gradient(
+            circle at center,
+            var(--shadow),
+            transparent 35%
+        ),
+        var(--bg);
+
+    overflow:auto;
+
+    padding:40px 20px;
+}
+
+.close-btn{
+    position:fixed;
+
+    top:20px;
+    right:25px;
+
+    width:45px;
+    height:45px;
+
+    border-radius:50%;
+
+    background:var(--panel);
+
+    border:1px solid var(--border);
+
+    color:white;
+
+    font-size:22px;
+
+    cursor:pointer;
+
+    z-index:6000;
+
+    transition:.25s;
+}
+
+.close-btn:hover{
+    background:var(--theme);
+
+    box-shadow:0 0 20px var(--glow);
+}
+
+/* =========================================================
+   PUZZLE
+========================================================= */
+
+.puzzle-container{
+    max-width:650px;
+    margin:70px auto;
+
+    text-align:center;
+}
+
+.puzzle-container h1{
+    color:var(--theme-bright);
+
+    font-size:42px;
+    letter-spacing:4px;
+
+    margin-bottom:10px;
+}
+
+.puzzle-info{
+    color:var(--muted);
+    margin-bottom:25px;
+}
+
+.puzzle-grid{
+    display:grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap:10px;
+
+    max-width:450px;
+
+    margin:auto;
+}
+
+.tile{
+    aspect-ratio:1;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:var(--panel);
+
+    border:1px solid var(--border);
+
+    border-radius:12px;
+
+    font-size:24px;
+    font-weight:bold;
+
+    cursor:pointer;
+
+    transition:.2s;
+}
+
+.tile:hover{
+    background:var(--hover);
+
+    border-color:var(--theme);
+
+    transform:scale(1.04);
+}
+
+/* =========================================================
+   CALCULATOR
+========================================================= */
+
+.calculator{
+    max-width:900px;
+    margin:70px auto;
+
+    display:grid;
+
+    grid-template-columns:
+        1fr 280px;
+
+    gap:20px;
+}
+
+.calc-main{
+    background:var(--panel);
+
+    border:1px solid var(--border);
+
+    border-radius:20px;
+
+    padding:22px;
+}
+
+.calc-title{
+    color:var(--theme-bright);
+
+    text-align:center;
+
+    font-size:28px;
+
+    margin-bottom:18px;
+}
+
+.calc-display{
+    width:100%;
+
+    min-height:85px;
+
+    padding:18px;
+
+    background:var(--bg);
+
+    border:1px solid var(--border);
+
+    border-radius:12px;
+
+    color:white;
+
+    font-size:30px;
+
+    text-align:right;
+
+    overflow:auto;
+
+    margin-bottom:15px;
+}
+
+.calc-mode{
+    display:flex;
+
+    justify-content:space-between;
+
+    margin-bottom:12px;
+
+    color:var(--muted);
+
+    font-size:13px;
+}
+
+.calc-mode button{
+    padding:7px 15px;
+
+    background:var(--hover);
+
+    color:white;
+
+    border:1px solid var(--border);
+
+    border-radius:7px;
+
+    cursor:pointer;
+}
+
+.calc-buttons{
+    display:grid;
+
+    grid-template-columns:
+        repeat(6,1fr);
+
+    gap:8px;
+}
+
+.calc-buttons button{
+    min-height:52px;
+
+    background:var(--panel2);
+
+    color:white;
+
+    border:1px solid var(--border);
+
+    border-radius:9px;
+
+    cursor:pointer;
+
+    font-weight:bold;
+
+    transition:.2s;
+}
+
+.calc-buttons button:hover{
+    background:var(--theme);
+
+    border-color:var(--theme);
+
+    box-shadow:0 0 12px var(--shadow);
+}
+
+.calc-buttons .equals{
+    background:var(--theme);
+    border-color:var(--theme);
+}
+
+.history{
+    background:var(--panel);
+
+    border:1px solid var(--border);
+
+    border-radius:20px;
+
+    padding:20px;
+
+    max-height:600px;
+
+    overflow:auto;
+}
+
+.history h3{
+    color:var(--theme-bright);
+
+    margin-bottom:15px;
+}
+
+.history-item{
+    padding:10px;
+
+    border-bottom:1px solid var(--border);
+
+    color:var(--muted);
+
+    font-size:13px;
+
+    cursor:pointer;
+}
+
+/* =========================================================
+   COLOR PICKER
+========================================================= */
+
+.color-picker{
+    max-width:700px;
+
+    margin:70px auto;
+
+    text-align:center;
+
+    background:var(--panel);
+
+    border:1px solid var(--border);
+
+    border-radius:22px;
+
+    padding:35px;
+}
+
+.color-picker h1{
+    color:var(--theme-bright);
+
+    letter-spacing:3px;
+
+    margin-bottom:10px;
+}
+
+.color-picker > p{
+    color:var(--muted);
+
+    margin-bottom:25px;
+}
+
+.color-input{
+    width:140px;
+    height:80px;
+
+    border:none;
+
+    background:none;
+
+    cursor:pointer;
+}
+
+.color-preview{
+    width:100%;
+    height:130px;
+
+    border-radius:15px;
+
+    border:1px solid var(--border);
+
+    margin:20px 0;
+}
+
+.color-values{
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:12px;
+}
+
+.value-box{
+    background:var(--bg);
+
+    border:1px solid var(--border);
+
+    border-radius:10px;
+
+    padding:15px;
+}
+
+.value-box small{
+    display:block;
+
+    color:var(--muted);
+
+    margin-bottom:8px;
+}
+
+.value-box strong{
+    color:white;
+
+    word-break:break-all;
+}
+
+.copy-btn{
+    margin-top:8px;
+
+    padding:7px 12px;
+
+    border-radius:7px;
+
+    background:var(--hover);
+
+    border:1px solid var(--border);
+
+    color:white;
+
+    cursor:pointer;
+}
+
+.random-btn{
+    margin-top:25px;
+
+    padding:13px 25px;
+
+    border-radius:9px;
+
+    background:var(--theme);
+
+    color:white;
+
+    border:1px solid var(--theme);
+
+    cursor:pointer;
+
+    font-weight:bold;
+}
+
+/* =========================================================
+   FEATURE 04 - AESTHETIC NOTEPAD
+========================================================= */
+
+.notepad-wrapper{
+    max-width:1250px;
+
+    height:calc(100vh - 80px);
+
+    margin:20px auto;
+
+    display:grid;
+
+    grid-template-columns:270px 1fr;
+
+    gap:15px;
+}
+
+/* SIDEBAR */
+
+.notes-sidebar{
+    background:
+        linear-gradient(
+            145deg,
+            var(--panel),
+            var(--panel2)
+        );
+
+    border:1px solid var(--border);
+
+    border-radius:20px;
+
+    padding:18px;
+
+    display:flex;
+    flex-direction:column;
+
+    overflow:hidden;
+
+    box-shadow:
+        0 20px 60px rgba(0,0,0,.3);
+}
+
+.notes-brand{
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    margin-bottom:18px;
+}
+
+.notes-brand h1{
+    font-size:20px;
+
+    letter-spacing:3px;
+
+    color:var(--theme-bright);
+}
+
+.note-count{
+    font-size:11px;
+
+    color:var(--muted);
+}
+
+.new-note-btn{
+    width:100%;
+
+    padding:12px;
+
+    border-radius:10px;
+
+    background:var(--theme);
+
+    border:1px solid var(--theme);
+
+    color:white;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    box-shadow:0 0 18px var(--shadow);
+
+    transition:.25s;
+}
+
+.new-note-btn:hover{
+    transform:translateY(-2px);
+
+    box-shadow:
+        0 0 20px var(--glow),
+        0 0 35px var(--shadow);
+}
+
+.notes-list{
+    margin-top:18px;
+
+    overflow-y:auto;
+
+    flex:1;
+
+    padding-right:3px;
+}
+
+.notes-list::-webkit-scrollbar{
+    width:5px;
+}
+
+.notes-list::-webkit-scrollbar-thumb{
+    background:var(--border-bright);
+
+    border-radius:10px;
+}
+
+.note-item{
+    padding:14px;
+
+    margin-bottom:8px;
+
+    border:1px solid transparent;
+
+    border-radius:12px;
+
+    cursor:pointer;
+
+    transition:.2s;
+}
+
+.note-item:hover{
+    background:var(--hover);
+
+    border-color:var(--border);
+}
+
+.note-item.active{
+    background:var(--hover);
+
+    border-color:var(--theme);
+
+    box-shadow:
+        inset 3px 0 0 var(--theme),
+        0 0 15px var(--shadow);
+}
+
+.note-item-title{
+    font-size:14px;
+
+    font-weight:bold;
+
+    white-space:nowrap;
+
+    overflow:hidden;
+
+    text-overflow:ellipsis;
+}
+
+.note-item-preview{
+    margin-top:5px;
+
+    font-size:11px;
+
+    color:var(--muted);
+
+    white-space:nowrap;
+
+    overflow:hidden;
+
+    text-overflow:ellipsis;
+}
+
+.note-item-date{
+    margin-top:7px;
+
+    font-size:9px;
+
+    color:var(--muted);
+}
+
+.empty-notes{
+    text-align:center;
+
+    padding:30px 10px;
+
+    color:var(--muted);
+
+    font-size:12px;
+
+    line-height:1.6;
+}
+
+/* EDITOR */
+
+.notes-editor{
+    min-width:0;
+
+    background:
+        linear-gradient(
+            145deg,
+            var(--panel),
+            var(--panel2)
+        );
+
+    border:1px solid var(--border);
+
+    border-radius:20px;
+
+    overflow:hidden;
+
+    display:flex;
+    flex-direction:column;
+
+    box-shadow:
+        0 20px 60px rgba(0,0,0,.3);
+}
+
+.editor-topbar{
+    min-height:70px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:15px;
+
+    padding:12px 18px;
+
+    border-bottom:1px solid var(--border);
+
+    background:rgba(0,0,0,.08);
+}
+
+.editor-title{
+    min-width:0;
+
+    flex:1;
+}
+
+#noteTitle{
+    width:100%;
+
+    background:transparent;
+
+    border:none;
+
+    outline:none;
+
+    color:white;
+
+    font-size:22px;
+
+    font-weight:bold;
+
+    letter-spacing:.5px;
+}
+
+#noteTitle::placeholder{
+    color:var(--muted);
+}
+
+.save-status{
+    display:flex;
+
+    align-items:center;
+
+    gap:7px;
+
+    color:var(--muted);
+
+    font-size:11px;
+
+    white-space:nowrap;
+}
+
+.status-dot{
+    width:7px;
+    height:7px;
+
+    border-radius:50%;
+
+    background:var(--theme);
+
+    box-shadow:0 0 10px var(--glow);
+}
+
+.editor-actions{
+    display:flex;
+
+    gap:7px;
+}
+
+.editor-action{
+    width:38px;
+    height:38px;
+
+    border-radius:9px;
+
+    background:var(--hover);
+
+    border:1px solid var(--border);
+
+    color:white;
+
+    cursor:pointer;
+
+    transition:.2s;
+}
+
+.editor-action:hover{
+    background:var(--theme);
+
+    border-color:var(--theme);
+}
+
+.editor-action.delete:hover{
+    background:#8b1e2d;
+
+    border-color:#b52a3b;
+}
+
+.note-body{
+    flex:1;
+
+    min-height:0;
+
+    display:flex;
+    flex-direction:column;
+
+    padding:20px 25px 10px;
+}
+
+#noteContent{
+    flex:1;
+
+    width:100%;
+
+    resize:none;
+
+    outline:none;
+
+    border:none;
+
+    background:transparent;
+
+    color:#f4f0f8;
+
+    font-size:16px;
+
+    line-height:1.8;
+
+    letter-spacing:.2px;
+}
+
+#noteContent::placeholder{
+    color:var(--muted);
+}
+
+#noteContent::-webkit-scrollbar{
+    width:6px;
+}
+
+#noteContent::-webkit-scrollbar-thumb{
+    background:var(--border-bright);
+
+    border-radius:10px;
+}
+
+.editor-footer{
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:10px 5px;
+
+    color:var(--muted);
+
+    font-size:11px;
+}
+
+.stats{
+    display:flex;
+
+    gap:15px;
+}
+
+.autosave-label{
+    color:var(--theme-bright);
+}
+
+/* =========================================================
+   THEME PANEL
+========================================================= */
+
+.theme-panel{
+    position:fixed;
+
+    right:22px;
+    bottom:22px;
+
+    width:250px;
+
+    z-index:9000;
+
+    background:var(--panel);
+
+    border:1px solid var(--border);
+
+    border-radius:18px;
+
+    padding:18px;
+
+    box-shadow:
+        0 15px 45px rgba(0,0,0,.5),
+        0 0 20px var(--shadow);
+
+    display:none;
+}
+
+.theme-panel.show{
+    display:block;
+}
+
+.theme-panel h3{
+    color:var(--theme-bright);
+
+    margin-bottom:12px;
+}
+
+.theme-panel p{
+    color:var(--muted);
+
+    font-size:12px;
+
+    line-height:1.5;
+
+    margin-bottom:15px;
+}
+
+.theme-picker-row{
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+}
+
+#themeColor{
+    width:55px;
+    height:40px;
+
+    border:none;
+
+    background:none;
+
+    cursor:pointer;
+}
+
+#themeHex{
+    flex:1;
+
+    padding:10px;
+
+    background:var(--bg);
+
+    border:1px solid var(--border);
+
+    border-radius:8px;
+
+    color:white;
+
+    outline:none;
+}
+
+.reset-theme{
+    width:100%;
+
+    margin-top:12px;
+
+    padding:10px;
+
+    border-radius:8px;
+
+    border:1px solid var(--border);
+
+    background:var(--hover);
+
+    color:white;
+
+    cursor:pointer;
+}
+
+.reset-theme:hover{
+    background:var(--theme);
+}
+
+.theme-toggle{
+    position:fixed;
+
+    right:22px;
+    bottom:22px;
+
+    width:52px;
+    height:52px;
+
+    border-radius:50%;
+
+    z-index:8000;
+
+    border:1px solid var(--border);
+
+    background:var(--panel);
+
+    color:white;
+
+    font-size:21px;
+
+    cursor:pointer;
+
+    box-shadow:0 0 20px var(--shadow);
+
+    transition:.25s;
+}
+
+.theme-toggle:hover{
+    background:var(--theme);
+
+    transform:rotate(20deg);
+}
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media(max-width:850px){
+
+    .notepad-wrapper{
+        grid-template-columns:1fr;
+
+        height:auto;
+    }
+
+    .notes-sidebar{
+        min-height:230px;
+    }
+
+    .notes-list{
+        max-height:170px;
+    }
+
+    .notes-editor{
+        min-height:650px;
+    }
+
+    .calculator{
+        grid-template-columns:1fr;
+    }
+}
+
+@media(max-width:700px){
+
+    .navbar{
+        padding:15px 5%;
+    }
+
+    .nav-links{
+        gap:12px;
+    }
+
+    .nav-links a{
+        font-size:12px;
+    }
+
+    .hero h1{
+        letter-spacing:8px;
+    }
+
+    .calc-buttons{
+        grid-template-columns:
+            repeat(4,1fr);
+    }
+
+    .color-values{
+        grid-template-columns:1fr;
+    }
+
+    .editor-topbar{
+        flex-wrap:wrap;
+    }
+
+    .editor-title{
+        order:1;
+        flex-basis:70%;
+    }
+
+    .save-status{
+        order:2;
+    }
+
+    .editor-actions{
+        order:3;
+        width:100%;
+    }
+
+    .editor-action{
+        flex:1;
+    }
+}
+
+@media(max-width:500px){
+
+    .nav-links{
+        display:none;
+    }
+
+    .hero{
+        min-height:80vh;
+    }
+
+    .hero p{
+        letter-spacing:2px;
+    }
+
+    .notepad-wrapper{
+        margin:10px auto;
+    }
+
+    .note-body{
+        padding:15px;
+    }
+
+    #noteTitle{
+        font-size:18px;
+    }
+
+    #noteContent{
+        font-size:15px;
+    }
+}
+/* =========================================================
+   FEATURE 05 - WORLD CLOCK
+========================================================= */
+
+.world-clock-container{
+    max-width:1100px;
+    margin:60px auto;
+    text-align:center;
+}
+
+.world-clock-container h1{
+    color:var(--theme-bright);
+    font-size:42px;
+    letter-spacing:4px;
+    margin-bottom:10px;
+}
+
+.world-clock-container > p{
+    color:var(--muted);
+    margin-bottom:25px;
+}
+
+.clock-search{
+    display:flex;
+    max-width:650px;
+    margin:0 auto 25px;
+    gap:10px;
+}
+
+#citySearch{
+    flex:1;
+    padding:14px 16px;
+    background:var(--panel);
+    border:1px solid var(--border);
+    border-radius:10px;
+    color:white;
+    outline:none;
+    font-size:14px;
+}
+
+#citySearch:focus{
+    border-color:var(--theme);
+    box-shadow:0 0 15px var(--shadow);
+}
+
+.clock-search button{
+    padding:14px 20px;
+    background:var(--theme);
+    border:1px solid var(--theme);
+    border-radius:10px;
+    color:white;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.clock-suggestions{
+    max-width:650px;
+    margin:-15px auto 25px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    justify-content:center;
+}
+
+.clock-suggestion{
+    padding:8px 13px;
+    background:var(--hover);
+    border:1px solid var(--border);
+    border-radius:8px;
+    color:var(--muted);
+    cursor:pointer;
+    font-size:12px;
+}
+
+.clock-suggestion:hover{
+    background:var(--theme);
+    color:white;
+    border-color:var(--theme);
+}
+
+.selected-clock{
+    background:var(--panel);
+    border:1px solid var(--border);
+    border-radius:20px;
+    padding:25px;
+    margin-bottom:25px;
+}
+
+.selected-clock h2{
+    color:var(--theme-bright);
+    margin-bottom:8px;
+}
+
+.selected-clock .big-time{
+    font-size:48px;
+    font-weight:bold;
+    margin:12px 0;
+}
+
+.selected-clock p{
+    color:var(--muted);
+    font-size:13px;
+    line-height:1.7;
+}
+
+.clock-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:15px;
+}
+
+.clock-card{
+    background:
+        linear-gradient(
+            145deg,
+            var(--panel),
+            var(--panel2)
+        );
+    border:1px solid var(--border);
+    border-radius:16px;
+    padding:22px;
+    text-align:left;
+    transition:.25s;
+}
+
+.clock-card:hover{
+    transform:translateY(-5px);
+    border-color:var(--theme);
+    box-shadow:0 0 20px var(--shadow);
+}
+
+.clock-card h3{
+    color:white;
+    margin-bottom:8px;
+}
+
+.clock-card .time{
+    font-size:28px;
+    font-weight:bold;
+    color:var(--theme-bright);
+}
+
+.clock-card .date{
+    color:var(--muted);
+    font-size:12px;
+    margin-top:7px;
+}
+
+.clock-card .zone{
+    color:var(--muted);
+    font-size:11px;
+    margin-top:10px;
+}
+/* =========================================================
+   FEATURE 06 - TYPING SPEED TEST
+========================================================= */
+
+.typing-container{
+    max-width:1000px;
+    margin:60px auto;
+    text-align:center;
+}
+
+.typing-container h1{
+    color:var(--theme-bright);
+    font-size:42px;
+    letter-spacing:4px;
+    margin-bottom:10px;
+}
+
+.typing-container > p{
+    color:var(--muted);
+    margin-bottom:25px;
+}
+
+.typing-stats{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:15px;
+    margin-bottom:20px;
+}
+
+.typing-stat{
+    background:var(--panel);
+    border:1px solid var(--border);
+    border-radius:14px;
+    padding:18px;
+}
+
+.typing-stat span{
+    display:block;
+    color:var(--muted);
+    font-size:12px;
+    margin-bottom:8px;
+}
+
+.typing-stat strong{
+    font-size:28px;
+    color:var(--theme-bright);
+}
+
+.typing-text{
+    background:var(--panel);
+    border:1px solid var(--border);
+    border-radius:16px;
+    padding:25px;
+    text-align:left;
+    color:white;
+    font-size:18px;
+    line-height:1.8;
+    margin-bottom:15px;
+}
+
+#typingInput{
+    width:100%;
+    min-height:150px;
+    resize:vertical;
+    box-sizing:border-box;
+    background:var(--panel2);
+    border:1px solid var(--border);
+    border-radius:14px;
+    padding:18px;
+    color:white;
+    outline:none;
+    font-size:17px;
+    line-height:1.6;
+}
+
+#typingInput:focus{
+    border-color:var(--theme);
+    box-shadow:0 0 15px var(--shadow);
+}
+
+.typing-controls{
+    margin-top:20px;
+    display:flex;
+    justify-content:center;
+    gap:10px;
+}
+
+.typing-controls button{
+    padding:13px 20px;
+    background:var(--theme);
+    border:1px solid var(--theme);
+    border-radius:10px;
+    color:white;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.typing-result{
+    margin-top:20px;
+    color:var(--muted);
+    font-size:14px;
+}
+
+@media(max-width:700px){
+
+    .typing-stats{
+        grid-template-columns:1fr;
+    }
+
+    .typing-container h1{
+        font-size:30px;
+    }
+
+}
+/* =========================================================
+   FEATURE 07 - AKINATOR
+========================================================= */
+
+.akinator-container{
+    max-width:800px;
+    margin:60px auto;
+    text-align:center;
+}
+
+.akinator-container h1{
+    color:var(--theme-bright);
+    font-size:42px;
+    letter-spacing:4px;
+    margin-bottom:10px;
+}
+
+.akinator-container > p{
+    color:var(--muted);
+    margin-bottom:30px;
+}
+
+.akinator-card{
+    background:
+        linear-gradient(
+            145deg,
+            var(--panel),
+            var(--panel2)
+        );
+    border:1px solid var(--border);
+    border-radius:20px;
+    padding:35px;
+    box-shadow:0 0 25px var(--shadow);
+}
+
+.akinator-question{
+    font-size:26px;
+    color:white;
+    margin-bottom:30px;
+    line-height:1.4;
+}
+
+.akinator-progress{
+    width:100%;
+    height:6px;
+    background:var(--bg3);
+    border-radius:10px;
+    overflow:hidden;
+    margin-bottom:25px;
+}
+
+.akinator-progress-bar{
+    height:100%;
+    width:0%;
+    background:var(--theme);
+    transition:.3s;
+}
+
+.akinator-buttons{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:12px;
+}
+
+.akinator-buttons button{
+    padding:14px;
+    background:var(--hover);
+    border:1px solid var(--border);
+    border-radius:10px;
+    color:white;
+    cursor:pointer;
+    font-weight:bold;
+    transition:.2s;
+}
+
+.akinator-buttons button:hover{
+    background:var(--theme);
+    border-color:var(--theme);
+    transform:translateY(-2px);
+}
+
+.akinator-result{
+    display:none;
+    margin-top:25px;
+}
+
+.akinator-result h2{
+    color:var(--theme-bright);
+    margin-bottom:10px;
+}
+
+.akinator-result p{
+    color:var(--muted);
+    line-height:1.6;
+}
+
+.akinator-restart{
+    margin-top:20px;
+    padding:13px 22px;
+    background:var(--theme);
+    border:1px solid var(--theme);
+    border-radius:10px;
+    color:white;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+@media(max-width:600px){
+
+    .akinator-container h1{
+        font-size:30px;
+    }
+
+    .akinator-card{
+        padding:22px;
+    }
+
+    .akinator-question{
+        font-size:21px;
+    }
+
+    .akinator-buttons{
+        grid-template-columns:1fr;
+    }
+
+}
+/* =========================================================
+   FEATURE 08 - TRANSLATOR STYLE
+========================================================= */
+
+.translator-container {
+    width: 90%;
+    max-width: 1000px;
+    margin: auto;
+    text-align: center;
+}
+
+.translator-container h1 {
+    color: var(--theme-bright);
+    letter-spacing: 4px;
+    margin-bottom: 8px;
+}
+
+.translator-container > p {
+    color: var(--muted);
+    margin-bottom: 25px;
+}
+
+.translator-card {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    padding: 25px;
+    box-shadow: 0 0 25px var(--shadow);
+}
+
+.translator-languages {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.translator-languages select {
+    flex: 1;
+    max-width: 300px;
+    padding: 12px 15px;
+
+    background: var(--panel2);
+    color: var(--theme-bright);
+
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    outline: none;
+}
+
+.translator-languages select:focus {
+    border-color: var(--border-bright);
+}
+
+.translator-swap {
+    width: 45px;
+    height: 45px;
+
+    border-radius: 50%;
+    border: 1px solid var(--border-bright);
+
+    background: var(--panel2);
+    color: var(--theme-bright);
+
+    font-size: 20px;
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.translator-swap:hover {
+    transform: rotate(180deg);
+    box-shadow: 0 0 15px var(--shadow);
+}
+
+.translator-boxes {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.translator-box {
+    background: var(--panel2);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    text-align: left;
+}
+
+.translator-box label {
+    display: block;
+    padding: 10px 15px;
+
+    color: var(--muted);
+    font-size: 12px;
+    letter-spacing: 2px;
+
+    border-bottom: 1px solid var(--border);
+}
+
+.translator-box textarea {
+    width: 100%;
+    height: 170px;
+
+    box-sizing: border-box;
+    resize: none;
+    padding: 15px;
+
+    background: transparent;
+    color: var(--theme-bright);
+
+    border: none;
+    outline: none;
+
+    font-family: inherit;
+    font-size: 15px;
+}
+
+.translator-box textarea::placeholder {
+    color: var(--muted);
+}
+
+.translator-output {
+    height: 170px;
+    padding: 15px;
+
+    box-sizing: border-box;
+
+    color: var(--theme-bright);
+    font-size: 15px;
+
+    overflow-y: auto;
+}
+
+
+/* =========================================================
+   TRANSLATOR BUTTONS
+========================================================= */
+
+.translator-actions {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.translator-actions button {
+    display: inline-block;
+
+    padding: 12px 28px;
+
+    background: var(--panel2);
+    color: var(--theme-bright);
+
+    border: 1px solid var(--border-bright);
+    border-radius: 10px;
+
+    cursor: pointer;
+
+    font-weight: bold;
+    letter-spacing: 1px;
+
+    transition: 0.2s;
+}
+
+.translator-actions button:hover {
+    background: var(--theme);
+    color: white;
+
+    box-shadow: 0 0 15px var(--shadow);
+}
+.login-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.login-card {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 35px;
+    width: 100%;
+    max-width: 420px;
+    text-align: center;
+    box-shadow: 0 0 25px var(--shadow);
+}
+
+.login-submit {
+    width: 100%;
+    padding: 14px;
+    background: var(--theme);
+    border: 1px solid var(--theme);
+    border-radius: 10px;
+    color: white;
+    font-weight: bold;
+    letter-spacing: 2px;
+    cursor: pointer;
+}
+/* =========================================================
+   FEATURE 09 - DECISION WHEEL STYLES
+========================================================= */
+
+.wheel-container {
+    max-width: 600px;
+    margin: 60px auto;
+    text-align: center;
+}
+
+.wheel-container h1 {
+    color: var(--theme-bright);
+    font-size: 42px;
+    letter-spacing: 4px;
+    margin-bottom: 10px;
+}
+
+.wheel-container > p {
+    color: var(--muted);
+    margin-bottom: 25px;
+}
+
+.wheel-card {
+    background: linear-gradient(
+        145deg,
+        var(--panel),
+        var(--panel2)
+    );
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 0 25px var(--shadow);
+}
+
+.wheel-input-group {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.wheel-input-group input {
+    flex: 1;
+    padding: 12px 15px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    color: white;
+    outline: none;
+    font-size: 14px;
+}
+
+.wheel-input-group input:focus {
+    border-color: var(--theme);
+    box-shadow: 0 0 10px var(--shadow);
+}
+
+.wheel-input-group button {
+    padding: 12px 20px;
+    background: var(--theme);
+    border: 1px solid var(--theme);
+    border-radius: 10px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.wheel-input-group button:hover {
+    background: var(--theme-bright);
+    box-shadow: 0 0 15px var(--glow);
+}
+
+.wheel-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 20px;
+    min-height: 50px;
+    max-height: 120px;
+    overflow-y: auto;
+    padding: 10px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+}
+
+.wheel-tag {
+    background: var(--hover);
+    border: 1px solid var(--border-bright);
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: white;
+}
+
+.wheel-tag span {
+    cursor: pointer;
+    color: var(--muted);
+    font-weight: bold;
+}
+
+.wheel-tag span:hover {
+    color: #ff4d4d;
+}
+
+.wheel-display {
+    background: var(--bg2);
+    border: 2px solid var(--border-bright);
+    border-radius: 15px;
+    padding: 30px;
+    font-size: 28px;
+    font-weight: bold;
+    color: var(--theme-bright);
+    text-shadow: 0 0 15px var(--glow);
+    min-height: 110px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 15px;
+    transition: transform 0.2s ease;
+}
+</style>
+</head>
+
+<body>
+
+<!-- =========================================================
+     NAVBAR
+========================================================= -->
+
+<nav class="navbar"> 
+
+    <div class="logo"> 
+        MIDNIGHT 
+    </div> 
+
+    <ul class="nav-links"> 
+
+        <li> 
+            <a href="#home">HOME</a> 
+        </li> 
+
+        <li> 
+            <a href="#features">FEATURES</a> 
+        </li> 
+
+        <li> 
+            <a href="#about">ABOUT</a> 
+        </li>
+
+        <li>
+            <button class="nav-login-btn"
+                onclick="openScreen('loginScreen')">
+                LOGIN
+            </button>
+        </li>
+
+    </ul> 
+
+</nav>
+
+
+<!-- =========================================================
+     HERO
+========================================================= -->
+
+<section class="hero" id="home">
+
+    <div class="hero-content">
+
+        <h1>MIDNIGHT</h1>
+
+        <p>
+            ENTER THE DARKNESS. PLAY YOUR WAY.
+        </p>
+
+        <button
+            class="main-btn"
+            onclick="document.getElementById('features').scrollIntoView()">
+
+            ENTER MIDNIGHT
+
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     FEATURES
+========================================================= -->
+
+<section class="section" id="features">
+
+    <div class="section-title">
+
+        <h2>FEATURES</h2>
+
+        <p>
+            Tools, utilities and experiences inside MIDNIGHT.
+        </p>
+
+    </div>
+
+
+    <div class="features">
+
+
+        <!-- FEATURE 01 -->
+
+        <div class="feature-card">
+
+            <div>
+
+                <span class="feature-number">
+                    FEATURE 01
+                </span>
+
+                <h3>
+                    PUZZLE GAME
+                </h3>
+
+                <p>
+                    Test your brain with a sliding puzzle.
+                </p>
+
+            </div>
+
+            <button
+                class="feature-btn"
+                onclick="openScreen('puzzleScreen')">
+
+                OPEN GAME
+
+            </button>
+
+        </div>
+
+
+        <!-- FEATURE 02 -->
+
+        <div class="feature-card">
+
+            <div>
+
+                <span class="feature-number">
+                    FEATURE 02
+                </span>
+
+                <h3>
+                    CALCULATOR
+                </h3>
+
+                <p>
+                    Powerful scientific calculator.
+                </p>
+
+            </div>
+
+            <button
+                class="feature-btn"
+                onclick="openScreen('calculatorScreen')">
+
+                OPEN CALCULATOR
+
+            </button>
+
+        </div>
+
+
+        <!-- FEATURE 03 -->
+
+        <div class="feature-card">
+
+            <div>
+
+                <span class="feature-number">
+                    FEATURE 03
+                </span>
+
+                <h3>
+                    COLOR PICKER
+                </h3>
+
+                <p>
+                    Pick colors and customize MIDNIGHT.
+                </p>
+
+            </div>
+
+            <button
+                class="feature-btn"
+                onclick="openScreen('colorScreen')">
+
+                OPEN COLOR PICKER
+
+            </button>
+
+        </div>
+
+
+        <!-- FEATURE 04 -->
+
+        <div class="feature-card">
+
+            <div>
+
+                <span class="feature-number">
+                    FEATURE 04
+                </span>
+
+                <h3>
+                    NOTEPAD
+                </h3>
+
+                <p>
+                    Write, organize and save your thoughts.
+                </p>
+
+            </div>
+
+            <button
+                class="feature-btn"
+                onclick="openScreen('notepadScreen'); renderNotes();">
+
+                OPEN NOTEPAD
+
+            </button>
+
+        </div>
+
+
+        <!-- FEATURE 05 -->
+
+<div class="feature-card">
+
+    <div>
+
+        <span class="feature-number">
+            FEATURE 05
+        </span>
+
+        <h3>
+            WORLD CLOCK
+        </h3>
+
+        <p>
+            Find the current time and timezone of cities around the world.
+        </p>
+
+    </div>
+
+    <button
+        class="feature-btn"
+        onclick="openScreen('worldClockScreen'); initWorldClock();">
+
+        OPEN WORLD CLOCK
+
+    </button>
+
+</div>
+
+<!-- FEATURE 06 -->
+<div class="feature-card">
+    <div>
+        <span class="feature-number">
+            FEATURE 06
+        </span>
+        <h3>
+            TYPING SPEED TEST
+        </h3>
+        <p>
+            Test your typing speed, accuracy and performance.
+        </p>
+    </div>
+
+    <button
+        class="feature-btn"
+        onclick="openScreen('typingScreen'); initTypingTest();">
+        START TYPING TEST
+    </button>
+</div>
+
+
+        <!-- FEATURE 07 -->
+
+<div class="feature-card">
+    <div>
+        <span class="feature-number">
+            FEATURE 07
+        </span>
+        <h3>
+            AKINATOR
+        </h3>
+        <p>
+            Think of a character and let MIDNIGHT try to guess it.
+        </p>
+    </div>
+
+    <button
+        class="feature-btn"
+        onclick="openScreen('akinatorScreen'); initAkinator();">
+        PLAY AKINATOR
+    </button>
+</div>
+
+
+<!-- FEATURE 08 -->
+<div class="feature-card">
+    <div>
+        <span class="feature-number">
+            FEATURE 08
+        </span>
+        <h3>
+            TRANSLATOR
+        </h3>
+        <p>
+            Translate text between different languages.
+        </p>
+    </div>
+    <button
+        class="feature-btn"
+        onclick="openScreen('translatorScreen')">
+        OPEN TRANSLATOR
+    </button>
+</div>
+
+
+<!-- FEATURE 09 -->
+<div class="feature-card">
+    <div>
+        <span class="feature-number">
+            FEATURE 09
+        </span>
+        <h3>
+            DECISION WHEEL
+        </h3>
+        <p>
+            Add your options and let MIDNIGHT make a random choice for you.
+        </p>
+    </div>
+    <button
+        class="feature-btn"
+        onclick="openScreen('wheelScreen')">
+        OPEN WHEEL
+    </button>
+</div>
+
+<!-- FEATURE 10 -->
+<div class="feature-card">
+    <div>
+        <span class="feature-number">
+            FEATURE 10
+        </span>
+        <h3>
+            JOKES & QUOTES
+        </h3>
+        <p>
+            Get infinite inspiration, motivation, and laughs with a single click.
+        </p>
+    </div>
+    <button
+        class="feature-btn"
+        onclick="openScreen('jqScreen'); nextJokeQuote();">
+        OPEN GENERATOR
+    </button>
+</div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     ABOUT
+========================================================= -->
+
+<section class="section" id="about">
+
+    <div class="section-title">
+
+        <h2>
+            ABOUT MIDNIGHT
+        </h2>
+
+    </div>
+
+    <div class="about">
+
+  <div class="about-box">
+
+    <h2>
+        MIDNIGHT
+    </h2>
+
+    <p style="margin-bottom: 25px;">
+        MIDNIGHT is a dark-themed utility website
+        designed to bring useful tools together in
+        one aesthetic interface.
+    </p>
+
+    <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 12px;">
+        <!-- Owner Badge -->
+        <span style="
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background: var(--hover);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            color: var(--muted);
+            font-size: 14px;
+        ">
+            <span>👤</span> Owner: <strong style="color: var(--theme-bright); margin-left: 4px;">Hammad</strong>
+        </span>
+
+        <!-- Contact Button -->
+        <a href="mailto:exev2082@gmail.com" style="
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background: var(--hover);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            color: var(--theme-bright);
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 14px;
+            transition: 0.25s;
+        " onmouseover="this.style.background='var(--theme)'; this.style.color='white'; this.style.borderColor='var(--theme)';" 
+           onmouseout="this.style.background='var(--hover)'; this.style.color='var(--theme-bright)'; this.style.borderColor='var(--border)';">
+            <span>✉</span> Contact: exev2082@gmail.com
+        </a>
+    </div>
+
+</div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<footer>
+
+    © 2026 MIDNIGHT. All rights reserved.
+
+</footer>
+
+
+<!-- =========================================================
+     PUZZLE SCREEN
+========================================================= -->
+
+<div
+    class="game-screen"
+    id="puzzleScreen">
+
+    <button
+        class="close-btn"
+        onclick="closeScreen('puzzleScreen')">
+
+        ×
+
+    </button>
+
+
+    <div class="puzzle-container">
+
+        <h1>
+            PUZZLE GAME
+        </h1>
+
+        <p class="puzzle-info">
+            Arrange the numbers from 1 to 15.
+        </p>
+
+        <div
+            class="puzzle-grid"
+            id="puzzleGrid">
+        </div>
+
+        <button
+            class="main-btn"
+            onclick="shufflePuzzle()">
+
+            SHUFFLE
+
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     CALCULATOR SCREEN
+========================================================= -->
+
+<div
+    class="game-screen"
+    id="calculatorScreen">
+
+    <button
+        class="close-btn"
+        onclick="closeScreen('calculatorScreen')">
+
+        ×
+
+    </button>
+
+
+    <div class="calculator">
+
+        <div class="calc-main">
+
+            <div class="calc-title">
+                SCIENTIFIC CALCULATOR
+            </div>
+
+            <div
+                class="calc-display"
+                id="calcDisplay">
+
+                0
+
+            </div>
+
+            <div class="calc-mode">
+
+                <span>
+                    Mode:
+                    <strong id="angleMode">
+                        DEG
+                    </strong>
+                </span>
+
+                <button onclick="toggleAngle()">
+                    DEG / RAD
+                </button>
+
+            </div>
+
+
+            <div class="calc-buttons">
+
+                <button onclick="calcInput('sin(')">
+                    sin
+                </button>
+
+                <button onclick="calcInput('cos(')">
+                    cos
+                </button>
+
+                <button onclick="calcInput('tan(')">
+                    tan
+                </button>
+
+                <button onclick="calcInput('sqrt(')">
+                    √
+                </button>
+
+                <button onclick="calcInput('log(')">
+                    log
+                </button>
+
+                <button onclick="calcInput('ln(')">
+                    ln
+                </button>
+
+
+                <button onclick="calcInput('asin(')">
+                    sin⁻¹
+                </button>
+
+                <button onclick="calcInput('acos(')">
+                    cos⁻¹
+                </button>
+
+                <button onclick="calcInput('atan(')">
+                    tan⁻¹
+                </button>
+
+                <button onclick="calcInput('abs(')">
+                    abs
+                </button>
+
+                <button onclick="calcInput('floor(')">
+                    floor
+                </button>
+
+                <button onclick="calcInput('ceil(')">
+                    ceil
+                </button>
+
+
+                <button onclick="calcInput('(')">
+                    (
+                </button>
+
+                <button onclick="calcInput(')')">
+                    )
+                </button>
+
+                <button onclick="calcInput('^')">
+                    ^
+                </button>
+
+                <button onclick="calcInput('^2')">
+                    x²
+                </button>
+
+                <button onclick="calcInput('!')">
+                    !
+                </button>
+
+                <button onclick="calcInput('%')">
+                    %
+                </button>
+
+
+                <button onclick="calcInput('pi')">
+                    π
+                </button>
+
+                <button onclick="calcInput('e')">
+                    e
+                </button>
+
+                <button onclick="calcInput('Ans')">
+                    Ans
+                </button>
+
+                <button onclick="calcInput('/')">
+                    ÷
+                </button>
+
+                <button onclick="calcInput('*')">
+                    ×
+                </button>
+
+                <button onclick="calcInput('-')">
+                    −
+                </button>
+
+
+                <button onclick="calcInput('7')">
+                    7
+                </button>
+
+                <button onclick="calcInput('8')">
+                    8
+                </button>
+
+                <button onclick="calcInput('9')">
+                    9
+                </button>
+
+                <button onclick="calcInput('+')">
+                    +
+                </button>
+
+                <button onclick="calcBackspace()">
+                    DEL
+                </button>
+
+                <button onclick="calcClear()">
+                    AC
+                </button>
+
+
+                <button onclick="calcInput('4')">
+                    4
+                </button>
+
+                <button onclick="calcInput('5')">
+                    5
+                </button>
+
+                <button onclick="calcInput('6')">
+                    6
+                </button>
+
+                <button onclick="calcInput('.')">
+                    .
+                </button>
+
+                <button onclick="calcInput('0')">
+                    0
+                </button>
+
+                <button
+                    class="equals"
+                    onclick="calculate()">
+
+                    =
+
+                </button>
+
+
+                <button onclick="calcInput('1')">
+                    1
+                </button>
+
+                <button onclick="calcInput('2')">
+                    2
+                </button>
+
+                <button onclick="calcInput('3')">
+                    3
+                </button>
+
+                <button onclick="calcInput(',')">
+                    ,
+                </button>
+
+                <button onclick="calcInput('-')">
+                    ±
+                </button>
+
+                <button onclick="calcInput('+')">
+                    +
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <div class="history">
+
+            <h3>
+                HISTORY
+            </h3>
+
+            <div id="historyList">
+                No calculations yet.
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     COLOR PICKER SCREEN
+========================================================= -->
+
+<div
+    class="game-screen"
+    id="colorScreen">
+
+    <button
+        class="close-btn"
+        onclick="closeScreen('colorScreen')">
+
+        ×
+
+    </button>
+
+
+    <div class="color-picker">
+
+        <h1>
+            COLOR PICKER
+        </h1>
+
+        <p>
+            Pick a color to change the entire MIDNIGHT GUI.
+        </p>
+
+
+        <input
+            type="color"
+            id="colorInput"
+            class="color-input"
+            value="#7c3aed">
+
+
+        <div
+            class="color-preview"
+            id="colorPreview">
+        </div>
+
+
+        <div class="color-values">
+
+            <div class="value-box">
+
+                <small>
+                    HEX
+                </small>
+
+                <strong id="hexValue">
+                    #7C3AED
+                </strong>
+
+                <br>
+
+                <button
+                    class="copy-btn"
+                    onclick="copyText('hexValue')">
+
+                    COPY
+
+                </button>
+
+            </div>
+
+
+            <div class="value-box">
+
+                <small>
+                    RGB
+                </small>
+
+                <strong id="rgbValue">
+                    rgb(124, 58, 237)
+                </strong>
+
+                <br>
+
+                <button
+                    class="copy-btn"
+                    onclick="copyText('rgbValue')">
+
+                    COPY
+
+                </button>
+
+            </div>
+
+
+            <div class="value-box">
+
+                <small>
+                    HSL
+                </small>
+
+                <strong id="hslValue">
+                    hsl(262, 83%, 58%)
+                </strong>
+
+                <br>
+
+                <button
+                    class="copy-btn"
+                    onclick="copyText('hslValue')">
+
+                    COPY
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <button
+            class="random-btn"
+            onclick="randomColor()">
+
+            RANDOM COLOR
+
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     FEATURE 04 - NOTEPAD SCREEN
+========================================================= -->
+
+<div
+    class="game-screen"
+    id="notepadScreen">
+
+    <button
+        class="close-btn"
+        onclick="closeScreen('notepadScreen')">
+
+        ×
+
+    </button>
+
+
+    <div class="notepad-wrapper">
+
+
+        <!-- ================= SIDEBAR ================= -->
+
+        <aside class="notes-sidebar">
+
+            <div class="notes-brand">
+
+                <h1>
+                    NOTEPAD
+                </h1>
+
+                <span
+                    class="note-count"
+                    id="noteCount">
+
+                    0 NOTES
+
+                </span>
+
+            </div>
+
+
+            <button
+                class="new-note-btn"
+                onclick="createNewNote()">
+
+                + NEW NOTE
+
+            </button>
+
+
+            <div
+                class="notes-list"
+                id="notesList">
+
+            </div>
+
+        </aside>
+
+
+        <!-- ================= EDITOR ================= -->
+
+        <main class="notes-editor">
+
+
+            <div class="editor-topbar">
+
+
+                <div class="editor-title">
+
+                    <input
+                        type="text"
+                        id="noteTitle"
+                        placeholder="Untitled Note"
+                        autocomplete="off">
+
+                </div>
+
+
+                <div class="save-status">
+
+                    <span class="status-dot"></span>
+
+                    <span id="saveStatus">
+                        SAVED
+                    </span>
+
+                </div>
+
+
+                <div class="editor-actions">
+
+                    <button
+                        class="editor-action"
+                        title="Copy Note"
+                        onclick="copyCurrentNote()">
+
+                        📋
+
+                    </button>
+
+
+                    <button
+                        class="editor-action"
+                        title="Download Note"
+                        onclick="downloadCurrentNote()">
+
+                        ↓
+
+                    </button>
+
+
+                    <button
+                        class="editor-action delete"
+                        title="Delete Note"
+                        onclick="deleteCurrentNote()">
+
+                        🗑
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <div class="note-body">
+
+                <textarea
+                    id="noteContent"
+                    placeholder="Start writing your thoughts...
+
+This is your private space inside MIDNIGHT.
+
+Write anything you want here..."
+                    spellcheck="true"></textarea>
+
+
+                <div class="editor-footer">
+
+                    <div class="stats">
+
+                        <span>
+                            <strong id="wordCount">
+                                0
+                            </strong>
+                            WORDS
+                        </span>
+
+                        <span>
+                            <strong id="charCount">
+                                0
+                            </strong>
+                            CHARACTERS
+                        </span>
+
+                    </div>
+
+
+                    <span class="autosave-label">
+                        ● AUTO-SAVE ON
+                    </span>
+
+                </div>
+
+            </div>
+
+        </main>
+
+    </div>
+
+</div>
+
+<!-- =========================================================
+     FEATURE 05 - WORLD CLOCK SCREEN
+========================================================= -->
+
+<div class="game-screen" id="worldClockScreen">
+
+    <button
+        class="close-btn"
+        onclick="closeScreen('worldClockScreen')">
+
+        ×
+
+    </button>
+
+    <div class="world-clock-container">
+
+        <h1>
+            WORLD CLOCK
+        </h1>
+
+        <p>
+            Find the current time anywhere in the world.
+        </p>
+
+        <div class="clock-search">
+
+            <input
+                type="text"
+                id="citySearch"
+                placeholder="Search city or country...">
+
+            <button onclick="searchCity()">
+                SEARCH
+            </button>
+
+        </div>
+
+        <div
+            class="clock-suggestions"
+            id="clockSuggestions">
+        </div>
+
+        <div
+            class="selected-clock"
+            id="selectedClock">
+
+            <h2>Islamabad, Pakistan</h2>
+
+            <div
+                class="big-time"
+                id="selectedTime">
+
+                --:--:--
+
+            </div>
+
+            <p id="selectedDetails">
+                Asia/Karachi
+            </p>
+
+        </div>
+
+        <div
+            class="clock-grid"
+            id="clockGrid">
+        </div>
+
+    </div>
+
+</div>
+<!-- =========================================================
+     FEATURE 06 - TYPING SPEED TEST SCREEN
+========================================================= -->
+
+<div class="game-screen" id="typingScreen">
+
+    <button
+        class="close-btn"
+        onclick="closeScreen('typingScreen')">
+        ×
+    </button>
+
+    <div class="typing-container">
+
+        <h1>
+            TYPING SPEED TEST
+        </h1>
+
+        <p>
+            Type the text as quickly and accurately as you can.
+        </p>
+
+        <div class="typing-stats">
+
+            <div class="typing-stat">
+                <span>TIME</span>
+                <strong id="typingTime">60</strong>
+            </div>
+
+            <div class="typing-stat">
+                <span>WPM</span>
+                <strong id="typingWpm">0</strong>
+            </div>
+
+            <div class="typing-stat">
+                <span>ACCURACY</span>
+                <strong id="typingAccuracy">100%</strong>
+            </div>
+
+        </div>
+
+        <div
+            class="typing-text"
+            id="typingText">
+            The quick brown fox jumps over the lazy dog.
+        </div>
+
+        <textarea
+            id="typingInput"
+            placeholder="Start typing here..."
+            spellcheck="false"></textarea>
+
+        <div class="typing-controls">
+
+            <button onclick="startTypingTest()">
+                START TEST
+            </button>
+
+            <button onclick="resetTypingTest()">
+                RESET
+            </button>
+
+        </div>
+
+        <div
+            class="typing-result"
+            id="typingResult">
+            Your results will appear here.
+        </div>
+
+    </div>
+
+</div>
+<!-- =========================================================
+     FEATURE 07 - AKINATOR SCREEN
+========================================================= -->
+
+<div class="game-screen" id="akinatorScreen">
+
+    <button
+        class="close-btn"
+        onclick="closeScreen('akinatorScreen')">
+        ×
+    </button>
+
+    <div class="akinator-container">
+
+        <h1>
+            AKINATOR
+        </h1>
+
+        <p>
+            Think of a character and answer the questions.
+        </p>
+
+        <div class="akinator-card">
+
+            <div class="akinator-progress">
+                <div
+                    class="akinator-progress-bar"
+                    id="akinatorProgress">
+                </div>
+            </div>
+
+            <div
+                class="akinator-question"
+                id="akinatorQuestion">
+                Think of a character...
+            </div>
+
+            <div
+                class="akinator-buttons"
+                id="akinatorButtons">
+
+                <button onclick="answerAkinator('yes')">
+                    YES
+                </button>
+
+                <button onclick="answerAkinator('no')">
+                    NO
+                </button>
+
+                <button onclick="answerAkinator('probably')">
+                    PROBABLY
+                </button>
+
+                <button onclick="answerAkinator('unknown')">
+                    DON'T KNOW
+                </button>
+
+            </div>
+
+            <div
+                class="akinator-result"
+                id="akinatorResult">
+
+                <h2 id="akinatorGuess">
+                    I THINK IT IS...
+                </h2>
+
+                <p id="akinatorMessage">
+                    Was I right?
+                </p>
+
+                <button
+                    class="akinator-restart"
+                    onclick="initAkinator()">
+                    PLAY AGAIN
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+<!-- =========================================================
+     FEATURE 08 - TRANSLATOR SCREEN
+========================================================= -->
+
+<div class="game-screen" id="translatorScreen">
+
+    <button
+    
+        class="close-btn"
+        onclick="closeScreen('translatorScreen')">
+        ×
+    </button>
+
+    <div class="translator-container">
+
+        <h1>
+            TRANSLATOR
+        </h1>
+
+        <p>
+            Translate text between different languages.
+        </p>
+
+        <div class="translator-card">
+
+            <div class="translator-languages">
+
+                <select id="translatorFrom">
+
+                    <option value="english">
+                        ENGLISH
+                    </option>
+
+                    <option value="urdu">
+                        URDU
+                    </option>
+
+                    <option value="spanish">
+                        SPANISH
+                    </option>
+
+                    <option value="french">
+                        FRENCH
+                    </option>
+
+                    <option value="german">
+                        GERMAN
+                    </option>
+
+                </select>
+
+
+                <button
+                    class="translator-swap"
+                    onclick="swapTranslatorLanguages()">
+
+                    ⇄
+
+                </button>
+
+
+                <select id="translatorTo">
+
+                    <option value="urdu">
+                        URDU
+                    </option>
+
+                    <option value="english">
+                        ENGLISH
+                    </option>
+
+                    <option value="spanish">
+                        SPANISH
+                    </option>
+
+                    <option value="french">
+                        FRENCH
+                    </option>
+
+                    <option value="german">
+                        GERMAN
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="translator-boxes">
+
+                <div class="translator-box">
+
+                    <label>
+                        YOUR TEXT
+                    </label>
+
+                    <textarea
+                        id="translatorInput"
+                        placeholder="Type your text here...">
+                    </textarea>
+
+                </div>
+
+
+                <div class="translator-box">
+
+                    <label>
+                        TRANSLATION
+                    </label>
+
+                    <div
+                        id="translatorOutput"
+                        class="translator-output">
+
+                        Your translation will appear here...
+
+                    </div>
+
+                </div>
+
+        </div>
+
+
+        <div class="translator-actions">
+
+            <button
+                type="button"
+                onclick="translateText()">
+
+                TRANSLATE
+
+            </button>
+
+
+            <button
+                type="button"
+                onclick="copyTranslation()">
+
+                COPY
+
+            </button>
+
+        </div>
+
+
+    </div>
+
+</div>
+
+</div>
+
+<!-- =========================================================
+     FEATURE 09 - DECISION WHEEL SCREEN
+========================================================= -->
+
+<div class="game-screen" id="wheelScreen">
+
+    <button
+        class="close-btn"
+        onclick="closeScreen('wheelScreen')">
+        ×
+    </button>
+
+    <div class="wheel-container">
+
+        <h1>
+            DECISION WHEEL
+        </h1>
+
+        <p>
+            Add your options, spin the wheel, and let MIDNIGHT decide!
+        </p>
+
+        <div class="wheel-card">
+
+            <div class="wheel-input-group">
+                <input
+                    type="text"
+                    id="wheelInput"
+                    placeholder="Enter an option (e.g., Pizza, Burger)..."
+                    autocomplete="off">
+
+                <button onclick="addWheelOption()">
+                    ADD
+                </button>
+            </div>
+
+            <div
+                class="wheel-tags"
+                id="wheelTags">
+                <!-- Tags will appear here -->
+            </div>
+
+            <div
+                class="wheel-display"
+                id="wheelDisplay">
+                <span>Click Spin to Decide!</span>
+            </div>
+
+            <button
+                class="main-btn"
+                onclick="spinWheel()"
+                style="margin-top: 20px; width: 100%;">
+                SPIN THE WHEEL
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- =========================================================
+     FEATURE 10 - JOKES & QUOTES SCREEN
+========================================================= -->
+
+<div class="game-screen" id="jqScreen">
+
+    <button
+        class="close-btn"
+        onclick="closeScreen('jqScreen')">
+        ×
+    </button>
+
+    <div class="jq-container">
+
+        <h1>
+            DAILY VIBES
+        </h1>
+
+        <p>
+            Explore hundreds of handpicked jokes and powerful quotes.
+        </p>
+
+        <div class="jq-card">
+
+            <div class="jq-tabs">
+                <button class="jq-tab active" onclick="switchJqTab('quote')" id="quoteTabBtn">QUOTES</button>
+                <button class="jq-tab" onclick="switchJqTab('joke')" id="jokeTabBtn">JOKES</button>
+            </div>
+
+            <div class="jq-content-box" id="jqDisplayBox">
+                <p id="jqText">"Loading inspiration for you..."</p>
+                <small id="jqAuthor">- MIDNIGHT</small>
+            </div>
+
+            <div class="jq-actions">
+                <button class="main-btn" onclick="nextJokeQuote()">
+                    GENERATE NEW
+                </button>
+                <button class="copy-btn" onclick="copyJqText()" style="padding: 13px 20px; font-weight: bold;">
+                    COPY TEXT
+                </button>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- =========================================================
+     THEME PANEL
+========================================================= -->
+
+<div
+    class="theme-panel"
+    id="themePanel">
+
+<button onclick="toggleThemePanel()" style="
+    position: absolute;
+    top: 10px;
+    right: 12px;
+    background: none;
+    border: none;
+    color: var(--muted);
+    font-size: 18px;
+    cursor: pointer;
+">×</button>
+    
+    <h3>
+        GLOBAL THEME
+    </h3>
+
+    <p>
+        Change this color to completely change
+        the MIDNIGHT interface.
+    </p>
+
+
+    <div class="theme-picker-row">
+
+        <input
+            type="color"
+            id="themeColor"
+            value="#7c3aed">
+
+
+        <input
+            type="text"
+            id="themeHex"
+            value="#7C3AED"
+            maxlength="7">
+
+    </div>
+
+
+    <button
+        class="reset-theme"
+        onclick="resetTheme()">
+
+        RESET THEME
+
+    </button>
+
+</div>
+
+
+<button
+    class="theme-toggle"
+    onclick="toggleThemePanel()">
+
+    🎨
+
+</button>
+
+
+<script>
+
+/* =========================================================
+   SCREEN SYSTEM
+========================================================= */
+
+function openScreen(id){
+
+    document.getElementById(id).style.display = "block";
+
+    document.body.style.overflow = "hidden";
+
+}
+
+function closeScreen(id){
+
+    document.getElementById(id).style.display = "none";
+
+    document.body.style.overflow = "auto";
+
+}
+
+
+/* =========================================================
+   FULL THEME SYSTEM
+========================================================= */
+
+function hexToRgb(hex){
+
+    hex = hex.replace("#","");
+
+    if(hex.length === 3){
+
+        hex =
+            hex[0]+hex[0]+
+            hex[1]+hex[1]+
+            hex[2]+hex[2];
+
+    }
+
+    const number =
+        parseInt(hex,16);
+
+    return {
+        r:(number >> 16) & 255,
+        g:(number >> 8) & 255,
+        b:number & 255
+    };
+
+}
+
+
+function rgbToHsl(r,g,b){
+
+    r /= 255;
+    g /= 255;
+    b /= 255;
+
+    const max =
+        Math.max(r,g,b);
+
+    const min =
+        Math.min(r,g,b);
+
+    let h = 0;
+    let s = 0;
+
+    const l =
+        (max + min) / 2;
+
+    if(max !== min){
+
+        const d =
+            max - min;
+
+        s =
+            l > .5
+            ? d/(2-max-min)
+            : d/(max+min);
+
+        switch(max){
+
+            case r:
+                h =
+                    (g-b)/d +
+                    (g < b ? 6 : 0);
+                break;
+
+            case g:
+                h =
+                    (b-r)/d + 2;
+                break;
+
+            case b:
+                h =
+                    (r-g)/d + 4;
+                break;
+
+        }
+
+        h /= 6;
+
+    }
+
+    return {
+        h:h*360,
+        s:s*100,
+        l:l*100
+    };
+
+}
+
+
+function clamp(value,min,max){
+
+    return Math.min(
+        Math.max(value,min),
+        max
+    );
+
+}
+
+
+function hsl(h,s,l){
+
+    return `hsl(${Math.round(h)}, ${Math.round(s)}%, ${Math.round(l)}%)`;
+
+}
+
+
+function applyFullTheme(hex){
+
+    if(!/^#[0-9A-Fa-f]{6}$/.test(hex)){
+        return;
+    }
+
+    const rgb =
+        hexToRgb(hex);
+
+    const color =
+        rgbToHsl(
+            rgb.r,
+            rgb.g,
+            rgb.b
+        );
+
+    const H =
+        color.h;
+
+    const S =
+        clamp(
+            color.s,
+            45,
+            85
+        );
+
+
+    const root =
+        document.documentElement;
+
+
+    root.style.setProperty(
+        "--theme",
+        hex
+    );
+
+    root.style.setProperty(
+        "--theme-bright",
+        hsl(H,S,70)
+    );
+
+
+    root.style.setProperty(
+        "--bg",
+        hsl(H,Math.min(S,45),4)
+    );
+
+    root.style.setProperty(
+        "--bg2",
+        hsl(H,Math.min(S,42),6)
+    );
+
+    root.style.setProperty(
+        "--bg3",
+        hsl(H,Math.min(S,40),8)
+    );
+
+
+    root.style.setProperty(
+        "--panel",
+        hsl(H,Math.min(S,38),10)
+    );
+
+    root.style.setProperty(
+        "--panel2",
+        hsl(H,Math.min(S,40),13)
+    );
+
+
+    root.style.setProperty(
+        "--border",
+        hsl(H,Math.min(S,40),20)
+    );
+
+    root.style.setProperty(
+        "--border-bright",
+        hsl(H,Math.min(S,65),35)
+    );
+
+
+    root.style.setProperty(
+        "--hover",
+        hsl(H,Math.min(S,55),18)
+    );
+
+
+    root.style.setProperty(
+        "--shadow",
+        `rgba(${rgb.r},${rgb.g},${rgb.b},.25)`
+    );
+
+    root.style.setProperty(
+        "--glow",
+        `rgba(${rgb.r},${rgb.g},${rgb.b},.5)`
+    );
+
+
+    localStorage.setItem(
+        "midnightFullTheme",
+        hex
+    );
+
+
+    document.getElementById(
+        "themeColor"
+    ).value = hex;
+
+    document.getElementById(
+        "themeHex"
+    ).value = hex.toUpperCase();
+
+
+    const colorInput =
+        document.getElementById(
+            "colorInput"
+        );
+
+    if(colorInput){
+
+        colorInput.value = hex;
+
+        updateColorPicker(hex);
+
+    }
+
+}
+
+
+/* Load saved theme */
+
+const savedTheme =
+    localStorage.getItem(
+        "midnightFullTheme"
+    );
+
+applyFullTheme(
+    savedTheme || "#7c3aed"
+);
+
+
+/* =========================================================
+   THEME PANEL
+========================================================= */
+
+function toggleThemePanel(){
+
+    document
+        .getElementById("themePanel")
+        .classList.toggle("show");
+
+}
+
+
+document
+    .getElementById("themeColor")
+    .addEventListener(
+        "input",
+        function(){
+
+            applyFullTheme(
+                this.value
+            );
+
+        }
+    );
+
+
+document
+    .getElementById("themeHex")
+    .addEventListener(
+        "input",
+        function(){
+
+            let value =
+                this.value.trim();
+
+            if(!value.startsWith("#")){
+                value = "#" + value;
+            }
+
+            if(
+                /^#[0-9A-Fa-f]{6}$/
+                .test(value)
+            ){
+
+                applyFullTheme(value);
+
+            }
+
+        }
+    );
+
+
+function resetTheme(){
+
+    applyFullTheme(
+        "#7c3aed"
+    );
+
+}
+
+
+/* =========================================================
+   COLOR PICKER
+========================================================= */
+
+document
+    .getElementById("colorInput")
+    .addEventListener(
+        "input",
+        function(){
+
+            updateColorPicker(
+                this.value
+            );
+
+            applyFullTheme(
+                this.value
+            );
+
+        }
+    );
+
+
+function updateColorPicker(hex){
+
+    const rgb =
+        hexToRgb(hex);
+
+    const hslColor =
+        rgbToHsl(
+            rgb.r,
+            rgb.g,
+            rgb.b
+        );
+
+
+    document.getElementById(
+        "colorPreview"
+    ).style.background = hex;
+
+
+    document.getElementById(
+        "hexValue"
+    ).textContent =
+        hex.toUpperCase();
+
+
+    document.getElementById(
+        "rgbValue"
+    ).textContent =
+        `rgb(${rgb.r}, ${rgb.g}, ${rgb.b})`;
+
+
+    document.getElementById(
+        "hslValue"
+    ).textContent =
+        `hsl(${Math.round(hslColor.h)}, ${Math.round(hslColor.s)}%, ${Math.round(hslColor.l)}%)`;
+
+}
+
+
+function randomColor(){
+
+    const letters =
+        "0123456789ABCDEF";
+
+    let color = "#";
+
+    for(let i=0;i<6;i++){
+
+        color +=
+            letters[
+                Math.floor(
+                    Math.random()*16
+                )
+            ];
+
+    }
+
+    applyFullTheme(color);
+
+}
+
+
+function copyText(id){
+
+    const text =
+        document
+        .getElementById(id)
+        .textContent;
+
+    navigator.clipboard.writeText(text);
+
+}
+
+
+/* =========================================================
+   PUZZLE
+========================================================= */
+
+let puzzleNumbers = [];
+
+
+function createPuzzle(){
+
+    puzzleNumbers =
+        Array.from(
+            {length:15},
+            (_,i)=>i+1
+        );
+
+    puzzleNumbers.push(null);
+
+    renderPuzzle();
+
+}
+
+
+function shufflePuzzle(){
+
+    for(let i=0;i<100;i++){
+
+        const empty =
+            puzzleNumbers.indexOf(null);
+
+        const possible = [];
+
+
+        if(empty % 4 !== 0)
+            possible.push(empty-1);
+
+        if(empty % 4 !== 3)
+            possible.push(empty+1);
+
+        if(empty >= 4)
+            possible.push(empty-4);
+
+        if(empty < 12)
+            possible.push(empty+4);
+
+
+        const random =
+            possible[
+                Math.floor(
+                    Math.random() *
+                    possible.length
+                )
+            ];
+
+
+        [
+            puzzleNumbers[empty],
+            puzzleNumbers[random]
+        ] =
+        [
+            puzzleNumbers[random],
+            puzzleNumbers[empty]
+        ];
+
+    }
+
+    renderPuzzle();
+
+}
+
+
+function moveTile(index){
+
+    const empty =
+        puzzleNumbers.indexOf(null);
+
+
+    const sameRow =
+        Math.floor(index/4) ===
+        Math.floor(empty/4);
+
+
+    if(
+        (
+            sameRow &&
+            Math.abs(index-empty) === 1
+        )
+        ||
+        Math.abs(index-empty) === 4
+    ){
+
+        [
+            puzzleNumbers[index],
+            puzzleNumbers[empty]
+        ] =
+        [
+            puzzleNumbers[empty],
+            puzzleNumbers[index]
+        ];
+
+        renderPuzzle();
+
+    }
+
+}
+
+
+function renderPuzzle(){
+
+    const grid =
+        document.getElementById(
+            "puzzleGrid"
+        );
+
+    grid.innerHTML = "";
+
+
+    puzzleNumbers.forEach(
+        (number,index)=>{
+
+            const tile =
+                document.createElement(
+                    "div"
+                );
+
+            tile.className =
+                "tile";
+
+
+            if(number === null){
+
+                tile.style.opacity = "0";
+
+            }else{
+
+                tile.textContent =
+                    number;
+
+                tile.onclick =
+                    () => moveTile(index);
+
+            }
+
+
+            grid.appendChild(tile);
+
+        }
+    );
+
+}
+
+
+createPuzzle();
+
+
+/* =========================================================
+   CALCULATOR
+========================================================= */
+
+let calcExpression = "";
+
+let lastAnswer = 0;
+
+let degreeMode = true;
+
+
+function calcInput(value){
+
+    if(
+        calcExpression === "0" &&
+        value !== "."
+    ){
+
+        calcExpression = "";
+
+    }
+
+    calcExpression += value;
+
+    updateDisplay();
+
+}
+
+
+function updateDisplay(){
+
+    document.getElementById(
+        "calcDisplay"
+    ).textContent =
+        calcExpression || "0";
+
+}
+
+
+function calcClear(){
+
+    calcExpression = "";
+
+    updateDisplay();
+
+}
+
+
+function calcBackspace(){
+
+    calcExpression =
+        calcExpression.slice(
+            0,-1
+        );
+
+    updateDisplay();
+
+}
+
+
+function toggleAngle(){
+
+    degreeMode =
+        !degreeMode;
+
+    document.getElementById(
+        "angleMode"
+    ).textContent =
+        degreeMode
+        ? "DEG"
+        : "RAD";
+
+}
+
+
+function factorial(n){
+
+    if(n < 0)
+        return NaN;
+
+    if(n === 0 || n === 1)
+        return 1;
+
+    let result = 1;
+
+    for(
+        let i=2;
+        i<=n;
+        i++
+    ){
+
+        result *= i;
+
+    }
+
+    return result;
+
+}
+
+
+function calculate(){
+
+    try{
+
+        let expression =
+            calcExpression;
+
+
+        expression =
+            expression
+            .replace(
+                /pi/g,
+                "Math.PI"
+            )
+            .replace(
+                /\be\b/g,
+                "Math.E"
+            )
+            .replace(
+                /Ans/g,
+                `(${lastAnswer})`
+            )
+            .replace(
+                /sqrt\(/g,
+                "Math.sqrt("
+            )
+            .replace(
+                /log\(/g,
+                "Math.log10("
+            )
+            .replace(
+                /ln\(/g,
+                "Math.log("
+            )
+            .replace(
+                /abs\(/g,
+                "Math.abs("
+            )
+            .replace(
+                /floor\(/g,
+                "Math.floor("
+            )
+            .replace(
+                /ceil\(/g,
+                "Math.ceil("
+            );
+
+
+        if(degreeMode){
+
+            expression =
+                expression
+                .replace(
+                    /sin\(/g,
+                    "Math.sin((Math.PI/180)*("
+                )
+                .replace(
+                    /cos\(/g,
+                    "Math.cos((Math.PI/180)*("
+                )
+                .replace(
+                    /tan\(/g,
+                    "Math.tan((Math.PI/180)*("
+                );
+
+        }else{
+
+            expression =
+                expression
+                .replace(
+                    /sin\(/g,
+                    "Math.sin("
+                )
+                .replace(
+                    /cos\(/g,
+                    "Math.cos("
+                )
+                .replace(
+                    /tan\(/g,
+                    "Math.tan("
+                );
+
+        }
+
+
+        expression =
+            expression
+            .replace(
+                /asin\(/g,
+                "Math.asin("
+            )
+            .replace(
+                /acos\(/g,
+                "Math.acos("
+            )
+            .replace(
+                /atan\(/g,
+                "Math.atan("
+            );
+
+
+        expression =
+            expression.replace(
+                /\^/g,
+                "**"
+            );
+
+
+        expression =
+            expression.replace(
+                /(\d+)!/g,
+                "factorial($1)"
+            );
+
+
+        expression =
+            expression.replace(
+                /(\d+(?:\.\d+)?)%/g,
+                "($1/100)"
+            );
+
+
+        const result =
+            Function(
+                "factorial",
+                `"use strict"; return (${expression})`
+            )(factorial);
+
+
+        if(
+            typeof result !== "number" ||
+            !isFinite(result)
+        ){
+
+            throw new Error();
+
+        }
+
+
+        lastAnswer =
+            Number(
+                result.toPrecision(12)
+            );
+
+
+        calcExpression =
+            String(lastAnswer);
+
+        updateDisplay();
+
+
+    }catch(error){
+
+        calcExpression = "ERROR";
+
+        updateDisplay();
+
+        setTimeout(()=>{
+
+            calcExpression = "";
+
+            updateDisplay();
+
+        },1200);
+
+    }
+
+}
+
+
+/* =========================================================
+   KEYBOARD
+========================================================= */
+
+document.addEventListener(
+    "keydown",
+    function(event){
+
+        const calculator =
+            document.getElementById(
+                "calculatorScreen"
+            );
+
+
+        if(
+            calculator.style.display !==
+            "block"
+        ){
+
+            return;
+
+        }
+
+
+        const key =
+            event.key;
+
+
+        if(
+            /^[0-9.]$/.test(key) ||
+            [
+                "+","-","*","/",
+                "(",")","^","%"
+            ].includes(key)
+        ){
+
+            calcInput(key);
+
+        }
+
+        else if(key === "Enter"){
+
+            calculate();
+
+        }
+
+        else if(key === "Backspace"){
+
+            calcBackspace();
+
+        }
+
+        else if(key === "Escape"){
+
+            calcClear();
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   MIDNIGHT NOTEPAD
+========================================================= */
+
+let notes =
+    JSON.parse(
+        localStorage.getItem(
+            "midnightNotes"
+        ) || "[]"
+    );
+
+
+let currentNoteId = null;
+
+
+/* Create initial note if none exists */
+
+if(notes.length === 0){
+
+    const firstNote = {
+
+        id:Date.now(),
+
+        title:"Welcome to MIDNIGHT",
+
+        content:
+`Welcome to your MIDNIGHT Notepad.
+
+This is your personal space to write, plan, create and organize your thoughts.
+
+Everything is automatically saved in your browser.
+
+Enjoy the darkness.`,
+
+        updated:new Date().toLocaleString()
+
+    };
+
+
+    notes.push(firstNote);
+
+    saveNotes();
+
+}
+
+
+currentNoteId =
+    notes[0].id;
+
+
+/* Save notes */
+
+function saveNotes(){
+
+    localStorage.setItem(
+        "midnightNotes",
+        JSON.stringify(notes)
+    );
+
+}
+
+
+/* Render sidebar */
+
+function renderNotes(){
+
+    const list =
+        document.getElementById(
+            "notesList"
+        );
+
+
+    list.innerHTML = "";
+
+
+    document.getElementById(
+        "noteCount"
+    ).textContent =
+        `${notes.length} ${notes.length === 1 ? "NOTE" : "NOTES"}`;
+
+
+    if(notes.length === 0){
+
+        list.innerHTML = `
+            <div class="empty-notes">
+                No notes yet.<br>
+                Create your first note.
+            </div>
+        `;
+
+        return;
+
+    }
+
+
+    notes.forEach(note=>{
+
+        const item =
+            document.createElement(
+                "div"
+            );
+
+
+        item.className =
+            "note-item";
+
+
+        if(
+            note.id === currentNoteId
+        ){
+
+            item.classList.add(
+                "active"
+            );
+
+        }
+
+
+        const title =
+            note.title.trim()
+            || "Untitled Note";
+
+
+        const preview =
+            note.content.trim()
+            || "Empty note";
+
+
+        item.innerHTML = `
+
+            <div class="note-item-title">
+                ${escapeHtml(title)}
+            </div>
+
+            <div class="note-item-preview">
+                ${escapeHtml(preview)}
+            </div>
+
+            <div class="note-item-date">
+                ${note.updated || ""}
+            </div>
+
+        `;
+
+
+        item.onclick = () => {
+
+            selectNote(note.id);
+
+        };
+
+
+        list.appendChild(item);
+
+    });
+
+}
+
+
+/* Prevent HTML injection in note preview */
+
+function escapeHtml(text){
+
+    return text
+        .replace(/&/g,"&amp;")
+        .replace(/</g,"&lt;")
+        .replace(/>/g,"&gt;")
+        .replace(/"/g,"&quot;")
+        .replace(/'/g,"&#039;");
+
+}
+
+
+/* Select note */
+
+function selectNote(id){
+
+    currentNoteId = id;
+
+    loadCurrentNote();
+
+    renderNotes();
+
+}
+
+
+/* Load selected note */
+
+function loadCurrentNote(){
+
+    const note =
+        notes.find(
+            n => n.id === currentNoteId
+        );
+
+
+    if(!note)
+        return;
+
+
+    document.getElementById(
+        "noteTitle"
+    ).value =
+        note.title;
+
+
+    document.getElementById(
+        "noteContent"
+    ).value =
+        note.content;
+
+
+    updateNoteStats();
+
+    setSaveStatus(
+        "SAVED"
+    );
+
+}
+
+
+/* New note */
+
+function createNewNote(){
+
+    const newNote = {
+
+        id:Date.now(),
+
+        title:"",
+
+        content:"",
+
+        updated:new Date().toLocaleString()
+
+    };
+
+
+    notes.unshift(
+        newNote
+    );
+
+
+    currentNoteId =
+        newNote.id;
+
+
+    saveNotes();
+
+    renderNotes();
+
+    loadCurrentNote();
+
+
+    setTimeout(()=>{
+
+        document
+            .getElementById("noteTitle")
+            .focus();
+
+    },100);
+
+}
+
+
+/* Auto-save */
+
+let saveTimer;
+
+
+function autoSaveNote(){
+
+    const note =
+        notes.find(
+            n => n.id === currentNoteId
+        );
+
+
+    if(!note)
+        return;
+
+
+    note.title =
+        document.getElementById(
+            "noteTitle"
+        ).value;
+
+
+    note.content =
+        document.getElementById(
+            "noteContent"
+        ).value;
+
+
+    note.updated =
+        new Date().toLocaleString();
+
+
+    setSaveStatus(
+        "SAVING..."
+    );
+
+
+    clearTimeout(saveTimer);
+
+
+    saveTimer =
+        setTimeout(()=>{
+
+            saveNotes();
+
+            setSaveStatus(
+                "SAVED"
+            );
+
+            renderNotes();
+
+        },500);
+
+}
+
+
+/* Save status */
+
+function setSaveStatus(text){
+
+    document.getElementById(
+        "saveStatus"
+    ).textContent =
+        text;
+
+}
+
+
+/* Stats */
+
+function updateNoteStats(){
+
+    const content =
+        document.getElementById(
+            "noteContent"
+        ).value;
+
+
+    const words =
+        content.trim()
+        ? content.trim().split(/\s+/).length
+        : 0;
+
+
+    document.getElementById(
+        "wordCount"
+    ).textContent =
+        words;
+
+
+    document.getElementById(
+        "charCount"
+    ).textContent =
+        content.length;
+
+}
+
+
+/* Input listeners */
+
+document
+    .getElementById("noteTitle")
+    .addEventListener(
+        "input",
+        function(){
+
+            autoSaveNote();
+
+        }
+    );
+
+
+document
+    .getElementById("noteContent")
+    .addEventListener(
+        "input",
+        function(){
+
+            updateNoteStats();
+
+            autoSaveNote();
+
+        }
+    );
+
+
+/* Copy note */
+
+function copyCurrentNote(){
+
+    const note =
+        notes.find(
+            n => n.id === currentNoteId
+        );
+
+
+    if(!note)
+        return;
+
+
+    const text =
+        `${note.title || "Untitled Note"}\n\n${note.content}`;
+
+
+    navigator.clipboard
+        .writeText(text)
+        .then(()=>{
+
+            setSaveStatus(
+                "COPIED"
+            );
+
+            setTimeout(()=>{
+
+                setSaveStatus(
+                    "SAVED"
+                );
+
+            },1200);
+
+        });
+
+}
+
+
+/* Download note */
+
+function downloadCurrentNote(){
+
+    const note =
+        notes.find(
+            n => n.id === currentNoteId
+        );
+
+
+    if(!note)
+        return;
+
+
+    const title =
+        note.title.trim()
+        || "midnight-note";
+
+
+    const content =
+        `${note.title || "Untitled Note"}\n\n${note.content}`;
+
+
+    const blob =
+        new Blob(
+            [content],
+            {
+                type:"text/plain"
+            }
+        );
+
+
+    const url =
+        URL.createObjectURL(
+            blob
+        );
+
+
+    const a =
+        document.createElement(
+            "a"
+        );
+
+
+    a.href = url;
+
+    a.download =
+        `${title.replace(/[^a-z0-9]/gi,"_")}.txt`;
+
+
+    document.body.appendChild(a);
+
+    a.click();
+
+    a.remove();
+
+    URL.revokeObjectURL(url);
+
+
+    setSaveStatus(
+        "DOWNLOADED"
+    );
+
+
+    setTimeout(()=>{
+
+        setSaveStatus(
+            "SAVED"
+        );
+
+    },1200);
+
+}
+
+
+/* Delete current note */
+
+function deleteCurrentNote(){
+
+    if(notes.length === 1){
+
+        notes[0].title = "";
+
+        notes[0].content = "";
+
+        notes[0].updated =
+            new Date().toLocaleString();
+
+        currentNoteId =
+            notes[0].id;
+
+    }else{
+
+        notes =
+            notes.filter(
+                n => n.id !== currentNoteId
+            );
+
+        currentNoteId =
+            notes[0].id;
+
+    }
+
+
+    saveNotes();
+
+    renderNotes();
+
+    loadCurrentNote();
+
+}
+
+
+/* Initial notepad render */
+
+renderNotes();
+
+loadCurrentNote();
+
+
+/* =========================================================
+   ESCAPE KEY
+========================================================= */
+
+document.addEventListener(
+    "keydown",
+    function(event){
+
+        if(
+            event.key !== "Escape"
+        )
+            return;
+
+
+        document
+            .querySelectorAll(".game-screen")
+            .forEach(screen=>{
+
+                if(
+                    screen.style.display ===
+                    "block"
+                ){
+
+                    screen.style.display =
+                        "none";
+
+                    document.body.style.overflow =
+                        "auto";
+
+                }
+
+            });
+
+    }
+);
+/* =========================================================
+   FEATURE 05 - WORLD CLOCK
+========================================================= */
+
+const worldLocations = {
+
+    Pakistan:{
+        city:"Islamabad",
+        country:"Pakistan",
+        timezone:"Asia/Karachi"
+    },
+
+    India:{
+        city:"New Delhi",
+        country:"India",
+        timezone:"Asia/Kolkata"
+    },
+
+    UAE:{
+        city:"Dubai",
+        country:"United Arab Emirates",
+        timezone:"Asia/Dubai"
+    },
+
+    UK:{
+        city:"London",
+        country:"United Kingdom",
+        timezone:"Europe/London"
+    },
+
+    USA:{
+        city:"New York",
+        country:"United States",
+        timezone:"America/New_York"
+    },
+
+    Japan:{
+        city:"Tokyo",
+        country:"Japan",
+        timezone:"Asia/Tokyo"
+    },
+
+    China:{
+        city:"Shanghai",
+        country:"China",
+        timezone:"Asia/Shanghai"
+    },
+
+    Australia:{
+        city:"Sydney",
+        country:"Australia",
+        timezone:"Australia/Sydney"
+    },
+
+    Canada:{
+        city:"Toronto",
+        country:"Canada",
+        timezone:"America/Toronto"
+    },
+
+    Germany:{
+        city:"Berlin",
+        country:"Germany",
+        timezone:"Europe/Berlin"
+    },
+
+    Turkey:{
+        city:"Istanbul",
+        country:"Turkey",
+        timezone:"Europe/Istanbul"
+    },
+
+    SaudiArabia:{
+        city:"Riyadh",
+        country:"Saudi Arabia",
+        timezone:"Asia/Riyadh"
+    }
+
+};
+
+let selectedLocation = worldLocations.Pakistan;
+
+function initWorldClock(){
+
+    renderClockSuggestions();
+    renderWorldClocks();
+    updateWorldClocks();
+
+}
+
+function renderClockSuggestions(){
+
+    const container =
+        document.getElementById("clockSuggestions");
+
+    container.innerHTML = "";
+
+    Object.values(worldLocations).forEach(location => {
+
+        const button =
+            document.createElement("button");
+
+        button.className =
+            "clock-suggestion";
+
+        button.textContent =
+            location.country;
+
+        button.onclick = () => {
+
+            selectedLocation = location;
+
+            updateSelectedClock();
+
+            document.getElementById(
+                "citySearch"
+            ).value = "";
+
+        };
+
+        container.appendChild(button);
+
+    });
+
+}
+
+function searchCity(){
+
+    const input =
+        document.getElementById("citySearch");
+
+    const query =
+        input.value.trim().toLowerCase();
+
+    if(!query) return;
+
+    const result =
+        Object.values(worldLocations).find(location =>
+
+            location.city.toLowerCase().includes(query) ||
+
+            location.country.toLowerCase().includes(query) ||
+
+            location.timezone.toLowerCase().includes(query)
+
+        );
+
+    if(result){
+
+        selectedLocation = result;
+
+        updateSelectedClock();
+
+    }
+
+}
+
+document
+    .getElementById("citySearch")
+    .addEventListener("keydown", function(event){
+
+        if(event.key === "Enter"){
+
+            searchCity();
+
+        }
+
+    });
+
+function updateSelectedClock(){
+
+    const now = new Date();
+
+    const time =
+        new Intl.DateTimeFormat(
+            "en-US",
+            {
+                timeZone:selectedLocation.timezone,
+                hour:"2-digit",
+                minute:"2-digit",
+                second:"2-digit",
+                hour12:true
+            }
+        ).format(now);
+
+    const date =
+        new Intl.DateTimeFormat(
+            "en-US",
+            {
+                timeZone:selectedLocation.timezone,
+                weekday:"long",
+                year:"numeric",
+                month:"long",
+                day:"numeric"
+            }
+        ).format(now);
+
+    document
+        .getElementById("selectedClock")
+        .querySelector("h2")
+        .textContent =
+        `${selectedLocation.city}, ${selectedLocation.country}`;
+
+    document
+        .getElementById("selectedTime")
+        .textContent =
+        time;
+
+    document
+        .getElementById("selectedDetails")
+        .innerHTML =
+        `${date}<br>${selectedLocation.timezone}`;
+
+}
+
+function renderWorldClocks(){
+
+    const grid =
+        document.getElementById("clockGrid");
+
+    grid.innerHTML = "";
+
+    Object.values(worldLocations).forEach(location => {
+
+        const card =
+            document.createElement("div");
+
+        card.className = "clock-card";
+
+        card.innerHTML = `
+
+            <h3>
+                ${location.city}
+            </h3>
+
+            <div
+                class="time"
+                data-timezone="${location.timezone}">
+                --:--:--
+            </div>
+
+            <div
+                class="date"
+                data-date="${location.timezone}">
+                --
+            </div>
+
+            <div class="zone">
+                ${location.country}<br>
+                ${location.timezone}
+            </div>
+
+        `;
+
+        grid.appendChild(card);
+
+    });
+
+}
+
+function updateWorldClocks(){
+
+    const now = new Date();
+
+    document
+        .querySelectorAll(".clock-card .time")
+        .forEach(element => {
+
+            const timezone =
+                element.dataset.timezone;
+
+            element.textContent =
+                new Intl.DateTimeFormat(
+                    "en-US",
+                    {
+                        timeZone:timezone,
+                        hour:"2-digit",
+                        minute:"2-digit",
+                        second:"2-digit",
+                        hour12:true
+                    }
+                ).format(now);
+
+        });
+
+    document
+        .querySelectorAll(".clock-card .date")
+        .forEach(element => {
+
+            const timezone =
+                element.dataset.date;
+
+            element.textContent =
+                new Intl.DateTimeFormat(
+                    "en-US",
+                    {
+                        timeZone:timezone,
+                        weekday:"short",
+                        month:"short",
+                        day:"numeric"
+                    }
+                ).format(now);
+
+        });
+
+    updateSelectedClock();
+
+}
+
+setInterval(updateWorldClocks,1000);
+/* =========================================================
+   FEATURE 06 - TYPING SPEED TEST
+========================================================= */
+
+const typingTexts = [
+
+    "The quick brown fox jumps over the lazy dog, and the dog chases the fox till a dead end where they start to fight.",
+
+    "Practice makes progress and every mistake helps you improve.",
+
+    "Learning new skills takes time, patience, and consistent effort.",
+
+    "Technology gives us powerful tools to learn, create, and explore.",
+
+    "Focus on accuracy first and speed will naturally improve.",
+
+    "Mr. Nasir is a very strict teacher, but he also teaches us English very well.",
+
+    "Technology has completely transformed the way we live, work, and communicate in the modern digital era, making global connectivity faster and more efficient than ever before.",
+
+    "Consistency and dedication are the true foundation of long-term success, proving that steady progress every single day will always outperform occasional bursts of intense effort",
+
+    "Exploring the vast world of software development requires patience, problem-solving skills, and a genuine passion for turning complex logic into seamless user experiences",
+
+    "Mastering the art of effective communication involves active listening, clear articulation, and an open mind to understand different perspectives during every conversation",
+
+    "Creativity is not just about making artistic things, but rather about approaching daily challenges with innovative solutions and thinking outside the traditional box",
+
+    "Time management is an essential skill that helps professionals prioritize important tasks, reduce unnecessary stress, and maintain a healthy work-life balance",
+
+    "Continuous learning keeps the human mind sharp and adaptable, ensuring that individuals can successfully navigate through sudden changes in their professional careers",
+
+    "Building a strong personal brand requires authenticity, consistent delivery of value, and meaningful engagement with the community you wish to serve",
+
+    "Overcoming failure is often the most important stepping stone toward achieving greatness, as every setback teaches valuable lessons that shape future success",
+ 
+    "The beauty of reading books lies in the ability to explore entirely new universes, gain diverse perspectives, and expand your imagination without leaving home",
+
+    "Healthy lifestyle habits such as regular physical exercise, balanced nutrition, and adequate sleep have a massive impact on overall productivity and mental well-being",
+
+    "Collaboration within a diverse team brings together unique strengths and creative ideas, allowing groups to solve complex problems much faster than individuals working alone",
+
+    "Financial literacy empowers people to make smart decisions regarding savings, investments, and budgeting, which ultimately leads to long-term economic stability",
+
+    "Embracing challenges with a positive mindset helps turn difficult obstacles into wonderful opportunities for personal growth and professional development",
+
+    "The pursuit of knowledge should be a lifelong journey fueled by curiosity, determination, and a willingness to explore uncharted territories of science and art"
+
+
+];
+
+let typingTimer = null;
+let typingTimeLeft = 60;
+let typingStarted = false;
+let typingStartTime = null;
+
+function initTypingTest(){
+
+    resetTypingTest();
+
+}
+
+function startTypingTest(){
+
+    if(typingStarted) return;
+
+    const input =
+        document.getElementById("typingInput");
+
+    typingStarted = true;
+
+    typingStartTime = Date.now();
+
+    input.focus();
+
+    typingTimer = setInterval(() => {
+
+        typingTimeLeft--;
+
+        document.getElementById(
+            "typingTime"
+        ).textContent = typingTimeLeft;
+
+        updateTypingStats();
+
+        if(typingTimeLeft <= 0){
+
+            finishTypingTest();
+
+        }
+
+    },1000);
+
+}
+
+function updateTypingStats(){
+
+    const input =
+        document.getElementById("typingInput").value;
+
+    const target =
+        document.getElementById("typingText").textContent;
+
+    if(!input){
+
+        document.getElementById(
+            "typingWpm"
+        ).textContent = "0";
+
+        document.getElementById(
+            "typingAccuracy"
+        ).textContent = "100%";
+
+        return;
+
+    }
+
+    let correct = 0;
+
+    for(let i = 0; i < input.length; i++){
+
+        if(input[i] === target[i]){
+
+            correct++;
+
+        }
+
+    }
+
+    const accuracy =
+        Math.round(
+            (correct / input.length) * 100
+        );
+
+    const elapsed =
+        Math.max(
+            (Date.now() - typingStartTime) / 60000,
+            1 / 60
+        );
+
+    const words =
+        input.trim().split(/\s+/).filter(Boolean).length;
+
+    const wpm =
+        Math.round(words / elapsed);
+
+    document.getElementById(
+        "typingAccuracy"
+    ).textContent =
+        Math.max(0,Math.min(100,accuracy)) + "%";
+
+    document.getElementById(
+        "typingWpm"
+    ).textContent =
+        wpm;
+
+}
+
+document
+    .getElementById("typingInput")
+    .addEventListener("input",function(){
+
+        if(!typingStarted){
+
+            startTypingTest();
+
+        }
+
+        updateTypingStats();
+
+        const target =
+            document.getElementById(
+                "typingText"
+            ).textContent;
+
+        if(this.value.length >= target.length){
+
+            finishTypingTest();
+
+        }
+
+    });
+
+function finishTypingTest(){
+
+    if(!typingStarted) return;
+
+    clearInterval(typingTimer);
+
+    typingStarted = false;
+
+    updateTypingStats();
+
+    const wpm =
+        document.getElementById(
+            "typingWpm"
+        ).textContent;
+
+    const accuracy =
+        document.getElementById(
+            "typingAccuracy"
+        ).textContent;
+
+    document.getElementById(
+        "typingResult"
+    ).textContent =
+        `Test finished! Your speed was ${wpm} WPM with ${accuracy} accuracy.`;
+
+}
+
+function resetTypingTest(){
+
+    clearInterval(typingTimer);
+
+    typingTimer = null;
+
+    typingTimeLeft = 60;
+
+    typingStarted = false;
+
+    typingStartTime = null;
+
+    const randomText =
+        typingTexts[
+            Math.floor(
+                Math.random() * typingTexts.length
+            )
+        ];
+
+    document.getElementById(
+        "typingText"
+    ).textContent =
+        randomText;
+
+    document.getElementById(
+        "typingInput"
+    ).value = "";
+
+    document.getElementById(
+        "typingTime"
+    ).textContent = "60";
+
+    document.getElementById(
+        "typingWpm"
+    ).textContent = "0";
+
+    document.getElementById(
+        "typingAccuracy"
+    ).textContent = "100%";
+
+    document.getElementById(
+        "typingResult"
+    ).textContent =
+        "Your results will appear here.";
+
+}
+/* =========================================================
+   FEATURE 07 - AKINATOR
+========================================================= */
+
+const akinatorQuestions = [
+
+    {
+        question:"Is your character real?",
+        key:"real"
+    },
+
+    {
+        question:"Is your character male?",
+        key:"male"
+    },
+
+    {
+        question:"Is your character a famous person?",
+        key:"famous"
+    },
+
+    {
+        question:"Is your character from a movie or TV show?",
+        key:"fictional"
+    },
+
+    {
+        question:"Is your character from a video game?",
+        key:"game"
+    },
+
+    {
+        question:"Is your character a superhero?",
+        key:"superhero"
+    },
+
+    {
+        question:"Is your character known for music?",
+        key:"music"
+    },
+
+    {
+        question:"Is your character known for sports?",
+        key:"sports"
+    },
+
+    {
+        question:"Is your character from an anime?",
+        key:"anime"
+    },
+
+    {
+        question:"Is your character a YouTuber or internet personality?",
+        key:"internet"
+    }
+
+];
+
+const akinatorCharacters = [
+
+    {
+        name:"Cristiano Ronaldo",
+        real:true,
+        male:true,
+        famous:true,
+        sports:true
+    },
+
+    {
+        name:"Lionel Messi",
+        real:true,
+        male:true,
+        famous:true,
+        sports:true
+    },
+
+    {
+        name:"MrBeast",
+        real:true,
+        male:true,
+        famous:true,
+        internet:true
+    },
+
+    {
+        name:"Taylor Swift",
+        real:true,
+        male:false,
+        famous:true,
+        music:true
+    },
+
+    {
+        name:"Spider-Man",
+        real:false,
+        male:true,
+        famous:true,
+        fictional:true,
+        superhero:true
+    },
+
+    {
+        name:"Batman",
+        real:false,
+        male:true,
+        famous:true,
+        fictional:true,
+        superhero:true
+    },
+
+    {
+        name:"Mario",
+        real:false,
+        male:true,
+        famous:true,
+        game:true
+    },
+
+    {
+        name:"Naruto",
+        real:false,
+        male:true,
+        famous:true,
+        anime:true
+    },
+
+    {
+        name:"Goku",
+        real:false,
+        male:true,
+        famous:true,
+        anime:true
+    },
+
+    {
+        name:"Tom Holland",
+        real:true,
+        male:true,
+        famous:true,
+        fictional:true
+    }
+
+];
+
+let akinatorIndex = 0;
+let akinatorAnswers = {};
+
+function initAkinator(){
+
+    akinatorIndex = 0;
+
+    akinatorAnswers = {};
+
+    document
+        .getElementById("akinatorResult")
+        .style.display = "none";
+
+    document
+        .getElementById("akinatorButtons")
+        .style.display = "grid";
+
+    showAkinatorQuestion();
+
+}
+
+function showAkinatorQuestion(){
+
+    if(akinatorIndex >= akinatorQuestions.length){
+
+        makeAkinatorGuess();
+
+        return;
+
+    }
+
+    const current =
+        akinatorQuestions[akinatorIndex];
+
+    document
+        .getElementById("akinatorQuestion")
+        .textContent =
+        current.question;
+
+    const progress =
+        (akinatorIndex /
+        akinatorQuestions.length) * 100;
+
+    document
+        .getElementById("akinatorProgress")
+        .style.width =
+        progress + "%";
+
+}
+
+function answerAkinator(answer){
+
+    const current =
+        akinatorQuestions[akinatorIndex];
+
+    akinatorAnswers[current.key] =
+        answer;
+
+    akinatorIndex++;
+
+    showAkinatorQuestion();
+
+}
+
+function makeAkinatorGuess(){
+
+    let bestCharacter = null;
+
+    let bestScore = -1;
+
+    akinatorCharacters.forEach(character => {
+
+        let score = 0;
+
+        Object.keys(akinatorAnswers).forEach(key => {
+
+            const answer =
+                akinatorAnswers[key];
+
+            if(answer === "unknown") return;
+
+            const characterValue =
+                character[key] === true;
+
+            if(answer === "yes" &&
+               characterValue){
+
+                score += 2;
+
+            }
+
+            if(answer === "no" &&
+               !characterValue){
+
+                score += 2;
+
+            }
+
+            if(answer === "probably" &&
+               characterValue){
+
+                score += 1;
+
+            }
+
+        });
+
+        if(score > bestScore){
+
+            bestScore = score;
+
+            bestCharacter = character;
+
+        }
+
+    });
+
+    if(!bestCharacter){
+
+        bestCharacter =
+            akinatorCharacters[0];
+
+    }
+
+    document
+        .getElementById("akinatorProgress")
+        .style.width = "100%";
+
+    document
+        .getElementById("akinatorQuestion")
+        .textContent =
+        "MY GUESS IS...";
+
+    document
+        .getElementById("akinatorGuess")
+        .textContent =
+        bestCharacter.name;
+
+    document
+        .getElementById("akinatorMessage")
+        .textContent =
+        "I used your answers to make this guess.";
+
+    document
+        .getElementById("akinatorButtons")
+        .style.display = "none";
+
+    document
+        .getElementById("akinatorResult")
+        .style.display = "block";
+
+}
+/* =========================================================
+   FEATURE 08 - TRANSLATOR
+========================================================= */
+
+function swapTranslatorLanguages() {
+
+    const from = document.getElementById("translatorFrom");
+    const to = document.getElementById("translatorTo");
+
+    const temp = from.value;
+
+    from.value = to.value;
+    to.value = temp;
+}
+
+
+function translateText() {
+
+    const input =
+        document.getElementById("translatorInput").value.trim();
+
+    const from =
+        document.getElementById("translatorFrom").value;
+
+    const to =
+        document.getElementById("translatorTo").value;
+
+    const output =
+        document.getElementById("translatorOutput");
+
+
+    if (input === "") {
+
+        output.textContent =
+            "Please enter some text first.";
+
+        return;
+    }
+
+
+    if (from === to) {
+
+        output.textContent = input;
+
+        return;
+    }
+
+
+    const translations = {
+
+        "hello": {
+            urdu: "ہیلو",
+            spanish: "Hola",
+            french: "Bonjour",
+            german: "Hallo"
+        },
+
+        "hello world": {
+            urdu: "ہیلو ورلڈ",
+            spanish: "Hola mundo",
+            french: "Bonjour le monde",
+            german: "Hallo Welt"
+        },
+
+        "how are you": {
+            urdu: "آپ کیسے ہیں؟",
+            spanish: "¿Cómo estás?",
+            french: "Comment allez-vous ?",
+            german: "Wie geht es dir?"
+        },
+
+        "good morning": {
+            urdu: "صبح بخیر",
+            spanish: "Buenos días",
+            french: "Bonjour",
+            german: "Guten Morgen"
+        },
+
+        "thank you": {
+            urdu: "شکریہ",
+            spanish: "Gracias",
+            french: "Merci",
+            german: "Danke"
+        },
+
+        "goodbye": {
+            urdu: "خدا حافظ",
+            spanish: "Adiós",
+            french: "Au revoir",
+            german: "Auf Wiedersehen"
+        }
+
+    };
+
+
+    const text = input.toLowerCase();
+
+
+    if (
+        from === "english" &&
+        translations[text] &&
+        translations[text][to]
+    ) {
+
+        output.textContent =
+            translations[text][to];
+
+        return;
+    }
+
+
+    if (
+        from === "urdu" &&
+        to === "english"
+    ) {
+
+        const urduWords = {
+
+            "ہیلو": "Hello",
+            "شکریہ": "Thank you",
+            "صبح بخیر": "Good morning",
+            "خدا حافظ": "Goodbye",
+            "آپ کیسے ہیں؟": "How are you?"
+
+        };
+
+        output.textContent =
+            urduWords[input] ||
+            "Translation not available.";
+
+        return;
+    }
+
+
+    output.textContent =
+        "Translation not available for this text.";
+
+}
+
+
+function copyTranslation() {
+
+    const output =
+        document.getElementById("translatorOutput").textContent;
+
+
+    if (
+        output === "" ||
+        output === "Your translation will appear here..."
+    ) {
+        return;
+    }
+
+
+    navigator.clipboard.writeText(output);
+
+}
+</script>
+
+<!-- =========================================================
+     MIDNIGHT LOGIN SCREEN (Fixed Version)
+========================================================= -->
+
+<div class="game-screen" id="loginScreen" style="display: flex !important; align-items: center; justify-content: center;">
+
+    <div class="login-container">
+
+        <div class="login-card">
+
+            <div class="login-icon">
+                ◈
+            </div>
+
+            <h1>MIDNIGHT</h1>
+
+            <p class="login-subtitle">
+                ENTER THE DARKNESS
+            </p>
+
+            <form id="midnightLoginForm" onsubmit="handleLoginSubmit(event)">
+
+                <!-- EMAIL STEP -->
+                <div id="emailStep">
+                    <label for="loginEmail">
+                        EMAIL ADDRESS
+                    </label>
+
+                    <input
+                        type="email"
+                        id="loginEmail"
+                        name="email"
+                        placeholder="yourname@gmail.com"
+                        autocomplete="email"
+                        required>
+
+                    <button
+                        type="button"
+                        class="login-submit"
+                        onclick="showPassword()"
+                        style="margin-top: 15px;">
+                        CONTINUE
+                    </button>
+                </div>
+
+                <!-- PASSWORD STEP -->
+                <div id="passwordStep" style="display:none; margin-top: 15px;">
+                    <label for="loginPassword">
+                        PASSWORD
+                    </label>
+
+                    <input
+                        type="password"
+                        id="loginPassword"
+                        name="password"
+                        placeholder="Enter your password">
+
+                    <button
+                        type="submit"
+                        class="login-submit"
+                        style="margin-top: 15px;">
+                        LOGIN
+                    </button>
+
+                    <button
+                        type="button"
+                        onclick="showEmail()"
+                        style="background:none; border:none; color:var(--muted); cursor:pointer; margin-top:12px; width:100%;">
+                        ← Change Email
+                    </button>
+                </div>
+
+                <input
+                    type="hidden"
+                    name="event"
+                    value="MIDNIGHT LOGIN">
+
+            </form>
+
+            <p class="login-note">
+                Your email will be used only for this login request.
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+<!-- =========================================================
+     SCRIPTS SECTION
+========================================================= -->
+
+<script>
+    function showPassword() {
+        const emailField = document.getElementById("loginEmail");
+        if (!emailField || emailField.value.trim() === "") {
+            alert("Please enter your email first!");
+            return;
+        }
+        document.getElementById("emailStep").style.display = "none";
+        document.getElementById("passwordStep").style.display = "block";
+    }
+
+    function showEmail() {
+        document.getElementById("passwordStep").style.display = "none";
+        document.getElementById("emailStep").style.display = "block";
+
+
+    }
+</script>
+
+<script src="script.js"></script>
+
+</body>
+</html>
+
+
+</script>
+
+<script src="script.js"></script>
+
